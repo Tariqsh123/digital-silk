@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
+</head>
+<body>
+
+<nav id="mainNav">
+    <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
+    <div class="nav-right-item">
+        <a href="#" class="nav-btn">Request a Demo</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+<ul>
+<li class="dropdown" id="servicesDropdown">
+    <a class="dropdown-toggle">Services <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Branding</a></li>
+        <li><a href="#">✔ Branding Services</a></li>
+        <li><a href="#">✔ Logo Design</a></li>
+        <li><a href="#">✔ Brand Identity</a></li>
+        <li><a href="#">✔ Graphic Design</a></li>
+        <li><a href="#">✔ Brand Marketing</a></li>
+        <li><a href="#">✔ Web Design</a></li>
+        <li><a href="#">✔ Custom Website Design</a></li>
+        <li><a href="#">✔ Shopify Website Design</a></li>
+        <li><a href="#">✔ WordPress Web Design</a></li>
+        <li><a href="#">✔ Magento Web Design</a></li>
+        <li><a href="#">✔ eCommerce Web Design</a></li>
+        <li><a href="#">✔ Marketing</a></li>
+        <li><a href="#">✔ Integrated Marketing Services</a></li>
+        <li><a href="#">✔ SEO</a></li>
+        <li><a href="#">✔ Social Media Marketing</a></li>
+        <li><a href="#">✔ Consulting Services</a></li>
+        <li><a href="#">✔ Before & After Designs</a></li>
+    </ul>
+</li>
+
+<li><a href="#">Case Studies</a></li>
+
+<li class="dropdown" id="industryDropdown">
+    <a class="dropdown-toggle">Work By Industry <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Before After</a></li>
+        <li><a href="#">✔ Auto Repair Web Design</a></li>
+        <li><a href="#">✔ Bank Web Design</a></li>
+        <li><a href="#">✔ Corporate Web Design</a></li>
+        <li><a href="#">✔ Construction Web Design</a></li>
+        <li><a href="#">✔ Dental Web Design</a></li>
+        <li><a href="#">✔ Family Law Attorney Web Design</a></li>
+        <li><a href="#">✔ Financial Advisor Web Design</a></li>
+        <li><a href="#">✔ Gym Web Design</a></li>
+        <li><a href="#">✔ Healthcare Web Design</a></li>
+        <li><a href="#">✔ Hotel Web Design</a></li>
+        <li><a href="#">✔ HVAC Web Design</a></li>
+        <li><a href="#">✔ Law Firm Web Design</a></li>
+        <li><a href="#">✔ Manufacturing Web Design</a></li>
+        <li><a href="#">✔ Plumber Web Design</a></li>
+        <li><a href="#">✔ Restaurant Web Design</a></li>
+        <li><a href="#">✔ Real Estate Web Design</a></li>
+        <li><a href="#">✔ Venture Capital Web Design</a></li>
+    </ul>
+</li>
+
+<li><a href="#">Digital Trends</a></li>
+<li><a href="#">About Us</a></li>
+<li><a href="#">Contact</a></li>
+<li class="mobile-btn"></li>
+</ul>
+
+</div>
+
+<script>
+const nav = document.getElementById("mainNav");
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const navBtn = document.querySelector(".nav-btn");
+const mobileBtnHolder = document.querySelector(".mobile-btn");
+const navRight = document.querySelector(".nav-right-item");
+
+function handleButtonMove(){
+    if(window.innerWidth <= 600){
+        if(!mobileBtnHolder.contains(navBtn)) mobileBtnHolder.appendChild(navBtn);
+    } else {
+        if(!navRight.contains(navBtn)) navRight.insertBefore(navBtn, navRight.firstChild);
+    }
+}
+handleButtonMove();
+window.addEventListener("resize", handleButtonMove);
+
+hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("open");
+    nav.classList.toggle("menu-open", sideMenu.classList.contains("open"));
+});
+
+const servicesDropdown = document.getElementById("servicesDropdown");
+const industryDropdown = document.getElementById("industryDropdown");
+
+function toggleDropdown(dropdown) {
+    [servicesDropdown, industryDropdown].forEach(d => {
+        if(d !== dropdown) d.classList.remove("open");
+    });
+    dropdown.classList.toggle("open");
+}
+
+servicesDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(servicesDropdown);
+});
+industryDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(industryDropdown);
+});
+
+document.addEventListener("click", (e) => {
+    if(!sideMenu.contains(e.target) && !hamburger.contains(e.target)){
+        hamburger.classList.remove("active");
+        sideMenu.classList.remove("open");
+        nav.classList.remove("menu-open");
+        servicesDropdown.classList.remove("open");
+        industryDropdown.classList.remove("open");
+    }
+});
+
+sideMenu.addEventListener("click", (e) => e.stopPropagation());
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+});
+</script>
+
+<!-- Navbar End -->
+
+<!-- Header -->
+ <header>
+    <video autoplay muted loop playsinline class="header-video">
+        <source src="video/header-bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="header-text-container">
+        <h2>Premium Web Design Agency</h2>
+        <h1>We Grow Brands Online</h1>
+        <h3>Custom Websites, Branding & Digital Marketing</h3>
+        <a href="#" class="header-btn">Request a Quote</a>
+    </div>
+</header>
+
+<!-- Marquee -->
+ 
+<div class="marquee-container">
+    <div class="marquee-track" id="marquee">
+        <img src="https://img.icons8.com/?size=100&id=60931&format=png&color=FFFFFF" alt="Logo 1">
+        <img src="https://img.icons8.com/?size=100&id=124338&format=png&color=FFFFFF" alt="Logo 2">
+        <img src="https://img.icons8.com/?size=100&id=jkcPNu2Zz3d0&format=png&color=FFFFFF" alt="Logo 3">
+        <img src="https://img.icons8.com/?size=100&id=QYs2rKqIVVJX&format=png&color=FFFFFF" alt="Logo 4">
+        <img src="https://img.icons8.com/?size=100&id=1481&format=png&color=FFFFFF" alt="Logo 5">
+        <!-- Duplicate for seamless loop -->
+        <img src="https://img.icons8.com/?size=100&id=60931&format=png&color=FFFFFF" alt="Logo 1">
+        <img src="https://img.icons8.com/?size=100&id=124338&format=png&color=FFFFFF" alt="Logo 2">
+        <img src="https://img.icons8.com/?size=100&id=jkcPNu2Zz3d0&format=png&color=FFFFFF" alt="Logo 3">
+        <img src="https://img.icons8.com/?size=100&id=QYs2rKqIVVJX&format=png&color=FFFFFF" alt="Logo 4">
+        <img src="https://img.icons8.com/?size=100&id=1481&format=png&color=FFFFFF" alt="Logo 5">
+    </div>
+</div>
+
+<script>
+const marquee = document.getElementById('marquee');
+const images = Array.from(marquee.children);
+function duplicateImages() {
+    const marqueeWidth = marquee.offsetWidth;
+    let totalWidth = 0;
+    images.forEach(img => {
+        totalWidth += img.offsetWidth + 30;
+    });
+    if(totalWidth < marqueeWidth * 2) {
+        images.forEach(img => {
+            marquee.appendChild(img.cloneNode(true));
+        });
+    }
+}
+window.addEventListener('load', duplicateImages);
+window.addEventListener('resize', duplicateImages);
+</script>
+
+<!-- After Header and marquee section -->
+ <div class="after-header-and-marquee-main-container">
+    <div class="after-header-and-marquee-inner-container">
+        <div class="after-header-and-marquee-left-container">
+            <h2>Creative Web Agency Delivering Custom Solutions</h2>
+            <ul>
+                <li>Custom Web Design Solutions To <span> Drive Conversions</span></li>
+                <li>Effective Marketing Campaigns To <span> Generate Growth</span></li>
+                <li>Tailored Branding Strategies To <span> Drive Engagement</span></li>
+            </ul>
+            <p>Digital Silk is a web design company & digital marketing agency focused on growing brands online. We create effective brand strategies, custom web design, development, and digital marketing solutions to generate greater brand engagement and conversions. We work closely with our clients to ensure each project meets their brand guidelines and business goals and provide technical and marketing expertise to ensure optimal results</p>
+        </div>
+        <div class="after-header-and-marquee-right-container">
+            <img src="https://www.digitalsilk.com/wp-content/uploads/2025/01/web-designs-with-trophy.png.webp" alt="">
+        </div>
+    </div>
+ </div>
+
+
+ <!-- Our Work Section -->
+  <div class="our-work-main-container">
+    <div class="our-work-inner-container">
+        <h3>OUR WORK</h3>
+        <h2>Featured Website Design Projects</h2>
+        <p>Custom B2C, B2B and eCommerce solutions optimized for traffic, engagement and conversion.</p>
+
+        <div class="our-work-button-section">
+            <button data-category="feature"><i class="fas fa-star"></i>Feature</button>
+            <button data-category="b2b"><i class="fas fa-briefcase"></i>B2B</button>
+            <button data-category="b2c"><i class="fas fa-users"></i>B2C</button>
+            <button data-category="ecommerce"><i class="fas fa-shopping-cart"></i>Ecommerce</button>
+        </div>
+
+        <div class="our-work-card-container">
+            <!-- Feature Cards -->
+            <!-- 1 -->
+            <div class="our-work-card feature">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card feature">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+
+
+            <!-- B2B Cards -->
+            <!-- 1 -->
+            <div class="our-work-card b2b" style="display:none;">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+             <div class="our-work-card b2b" style="display:none;">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+
+
+            <!-- B2C Cards -->
+             <!-- 1 -->
+            <div class="our-work-card b2c" style="display:none;">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+             <div class="our-work-card b2c" style="display:none;">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+
+            <!-- Ecommerce Cards -->
+             <!-- 1 -->
+            <div class="our-work-card ecommerce" style="display:none;">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+             <div class="our-work-card ecommerce" style="display:none;">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- end -->
+        </div>
+    </div>
+</div>
+
+<script>
+const workButtons = document.querySelectorAll('.our-work-button-section button');
+const workCards = document.querySelectorAll('.our-work-card');
+workButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        workButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.getAttribute('data-category');
+        workCards.forEach(card => {
+            if(card.classList.contains(category)){
+                card.style.display = 'flex'; 
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+workButtons[0].click();
+</script>
+ <!-- Our Work Section End -->
+
+ <div class="industries-main-section">
+    <div class="industries-inner-section">
+        <h3>Clients Across Industries</h3>
+        <h2>Full-Service Web Design Agency</h2>
+        <p>From startups to Fortune 500 companies,</p>
+        <h3>we create custom solutions that grow brands online</h3>
+
+        <div class="industries-card-container">
+            <!-- 1 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=24662&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 2 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 3 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=UKr37LUAVwrG&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 4 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=Z8zaYhnH3xcP&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 5 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=UKr37LUAVwrG&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 6 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=Z8zaYhnH3xcP&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 7 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=24662&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 8 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
+            </div>
+
+
+
+        </div>
+        
+    </div>
+ </div>
+
+</body>
+</html>
