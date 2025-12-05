@@ -344,13 +344,370 @@ workButtons[0].click();
             <div class="industries-card">
                 <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
             </div>
-
-
-
         </div>
-        
     </div>
  </div>
+
+ <!-- Home Fixed Right Cards -->
+  <div class="home-fix-right-card-main-container">
+    <div class="home-fix-right-card-inner-container">
+        <!-- left -->
+        <div class="home-fix-right-card-left-container">
+            <div class="home-fix-right-card-left-top-container">
+                <h3>WHY DIGITAL SILK?</h3>
+                <h1>Discover Our Expertise as a Web Design Company</h1>
+                <p>As a full-service web design agency, we handle all your digital needs under one roof. Our custom web design services include thorough research and planning, bespoke designs and digital strategies tailored to grow your reach, drive traffic and encourage engagement.</p>
+            </div>
+            <div class="home-fix-right-card-left-bottom-container">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/09/Explore-Our-Web-Design-Services-1.png.webp" alt="">
+             </div>
+        </div>
+        <!-- right -->
+        <div class="home-fix-right-card-right-container">
+            <!-- 1 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=NGd9qoFXnGYh&format=png&color=00ACFC" alt="">
+                <h2>Custom Web Designing</h2>
+                <p>Each website we create is meticulously crafted to deliver a 100% unique online experience tailored to your brand. Our expert designers transform your vision into a dynamic, custom design that enhances your brand’s visibility, boosts engagement, and drives conversions. With us, your website will not only stand out but also connect deeply with your audience. </p>
+            </div>
+            <!-- 2 -->
+             <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=54726&format=png&color=00ACFC" alt="">
+                <h2>Responsive Web Design</h2>
+                <p>We deliver seamless user experiences across all devices. Our responsive designs adapt flawlessly to any screen size, ensuring that your website not only meets but exceeds user expectations. From planning to design and development, we ensure a consistent, engaging experience for every visitor, no matter how they access your site.</p>
+            </div>
+            <!-- 3 -->
+             <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=AP9os0hAZdxZ&format=png&color=00ACFC" alt="">
+                <h2>Website Redesign</h2>
+                <p>Whether you need a design refresh or a complete website overhaul, we analyze your site’s pain points and opportunities to revitalize your digital presence. Our award-winning web designers will breathe new life into your website, enhancing its functionality, user experience, and aesthetic appeal. The result? A modern, dynamic site that drives increased traffic and bolsters your industry reputation. </p>
+            </div>
+            <!-- 4 -->
+             <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=hZCaqCLs9CDs&format=png&color=00ACFC" alt="">
+                <h2>UI UX Web Design</h2>
+                <p>Our award-winning designers use trusted methods and innovative approaches to create engaging visual experiences and seamless user journeys. Whether you’re looking to build a custom UX/UI or redesign your current one, we’ll enhance your visual identity and ensure your website is both aesthetically pleasing and highly functional.</p>
+            </div>
+            <!-- 5 -->
+             <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=IeE832FyrVT5&format=png&color=00ACFC" alt="">
+                <h2>Search Engine Optimization</h2>
+                <p>We offer a comprehensive range of services designed to boost your website’s ranking and attract organic, non-paid Google search traffic. Our team can conduct a thorough SEO audit of your website, providing actionable insights and strategies to enhance your organic reach and visibility on search engines.</p>
+            </div>
+            <!-- 6 -->
+             <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=xNRxoA7zsi5v&format=png&color=00ACFC" alt="">
+                <h2>eCommerce Design & Development</h2>
+                <p>We specialize in design and development for leading content management systems (CMSs) like Shopify, Magento, and WooCommerce. Our experts can help you build and scale your eCommerce website across platforms, ensuring a seamless and robust online shopping experience for your customers</p>
+            </div>
+            <!-- end -->
+        </div>
+    </div>
+  </div>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const right = document.querySelector('.home-fix-right-card-right-container');
+
+    let isDragging = false;
+    let isHovering = false;
+    let startY, scrollTop;
+    let autoSlideSpeed = 1;
+    let direction = 1;
+    let autoSlideId = null;
+
+    function initDragAndSlide() {
+        if (autoSlideId) cancelAnimationFrame(autoSlideId);
+        if (window.innerWidth <= 1200) {
+            right.style.overflowY = 'auto';
+            right.style.cursor = 'auto';
+            right.style.scrollBehavior = 'auto';
+            return;
+        }
+        right.style.overflow = 'hidden';
+        right.style.cursor = 'grab';
+        right.style.scrollBehavior = 'smooth';
+        right.addEventListener('mousedown', dragStart);
+        right.addEventListener('mouseleave', dragEnd);
+        right.addEventListener('mouseup', dragEnd);
+        right.addEventListener('mousemove', dragMove);
+        right.addEventListener('touchstart', dragStartTouch);
+        right.addEventListener('touchmove', dragMoveTouch);
+        right.addEventListener('touchend', dragEnd);
+        right.addEventListener('mouseenter', () => { isHovering = true; });
+        right.addEventListener('mouseleave', () => { isHovering = false; });
+        autoSlide();
+    }
+    function dragStart(e) {
+        isDragging = true;
+        startY = e.pageY - right.offsetTop;
+        scrollTop = right.scrollTop;
+        right.style.cursor = 'grabbing';
+    }
+    function dragEnd() {
+        isDragging = false;
+        right.style.cursor = 'grab';
+    }
+    function dragMove(e) {
+        if (!isDragging) return;
+        const y = e.pageY - right.offsetTop;
+        right.scrollTop = scrollTop - (y - startY);
+    }
+    function dragStartTouch(e) {
+        isDragging = true;
+        startY = e.touches[0].pageY - right.offsetTop;
+        scrollTop = right.scrollTop;
+    }
+    function dragMoveTouch(e) {
+        if (!isDragging) return;
+        const y = e.touches[0].pageY - right.offsetTop;
+        right.scrollTop = scrollTop - (y - startY);
+    }
+    function autoSlide() {
+        if (!isDragging && !isHovering && window.innerWidth > 1200) {
+            right.scrollTop += autoSlideSpeed * direction;
+
+            if (right.scrollTop >= right.scrollHeight - right.clientHeight) {
+                direction = -1;
+            } else if (right.scrollTop <= 0) {
+                direction = 1;
+            }
+        }
+        autoSlideId = requestAnimationFrame(autoSlide);
+    }
+    initDragAndSlide();
+    window.addEventListener('resize', () => {
+        right.removeEventListener('mousedown', dragStart);
+        right.removeEventListener('mouseleave', dragEnd);
+        right.removeEventListener('mouseup', dragEnd);
+        right.removeEventListener('mousemove', dragMove);
+        right.removeEventListener('touchstart', dragStartTouch);
+        right.removeEventListener('touchmove', dragMoveTouch);
+        right.removeEventListener('touchend', dragEnd);
+        right.removeEventListener('mouseenter', () => { isHovering = true; });
+        right.removeEventListener('mouseleave', () => { isHovering = false; });
+        initDragAndSlide();
+    });
+});
+  </script>
+ <!-- Home Fixed Right Cards -->
+
+ <!-- Case Studies -->
+  <div class="home-case-studies-main-container">
+    <!-- heading -->
+    <div class="home-case-studies-heading-section">
+        <h2>Case <br> Studies</h2>
+        <p>From Concept To Market: <br> We Engineer Projects For <span> Superior Performance</span></p>
+    </div>
+    <!-- left -->
+    <div class="home-case-studies-left-container">
+    <!-- Image 1 -->
+    <div class="img-wrapper" 
+         data-bg="url('https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=800&q=80')"
+         data-right-img="https://www.digitalsilk.com/wp-content/uploads/2022/07/hp-logo.svg"
+         data-right-text="HP implemented a global rewards program."
+         data-bottom-num1="46" data-bottom-unit1="k" data-bottom-text1="active members inside the program"
+         data-bottom-num2="58" data-bottom-unit2="%" data-bottom-text2="of customers are repeat customers">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/hp-logo.svg" alt="">
+    </div>
+
+    <!-- Image 2 -->
+    <div class="img-wrapper" 
+         data-bg="url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80')"
+         data-right-img="https://www.digitalsilk.com/wp-content/uploads/2022/07/xerox-logo.svg"
+         data-right-text="Xerox improved workflow efficiency globally."
+         data-bottom-num1="32" data-bottom-unit1="k" data-bottom-text1="members engaged globally"
+         data-bottom-num2="72" data-bottom-unit2="%" data-bottom-text2="customer satisfaction rate">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/xerox-logo.svg" alt="">
+    </div>
+
+    <!-- Image 3 -->
+    <div class="img-wrapper" 
+         data-bg="url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80')"
+         data-right-img="https://www.digitalsilk.com/wp-content/uploads/2022/11/doForms-logo-blue.svg"
+         data-right-text="doForms digitized field data collection easily."
+         data-bottom-num1="28" data-bottom-unit1="k" data-bottom-text1="tasks completed monthly"
+         data-bottom-num2="85" data-bottom-unit2="%" data-bottom-text2="success rate">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/11/doForms-logo-blue.svg" alt="">
+    </div>
+
+    <!-- Image 4 -->
+    <div class="img-wrapper" 
+         data-bg="url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80')"
+         data-right-img="https://www.digitalsilk.com/wp-content/uploads/2022/11/MCDS-logo-blue.svg"
+         data-right-text="MCDS streamlined customer engagement programs."
+         data-bottom-num1="50" data-bottom-unit1="k" data-bottom-text1="loyal customers served"
+         data-bottom-num2="90" data-bottom-unit2="%" data-bottom-text2="retention rate">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/11/MCDS-logo-blue.svg" alt="">
+    </div>
+</div>
+
+    <!-- right -->
+    <div class="home-case-studies-right-container">
+        <div class="home-case-studies-right-top-container">
+            <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/hp-logo.svg" alt="">
+            <p>HP needed to implement a global rewards program.</p>
+        </div>
+        <div class="home-case-studies-right-bottom-container">
+            <div class="home-case-studies-right-bottom-card">
+                <h2>46<span>k</span></h2>
+                <p>active members inside the program</p>
+            </div>
+            <div class="home-case-studies-right-bottom-card">
+                <h2>58<span>%</span></h2>
+                <p>of customers are repeat customers</p>
+            </div>
+        </div>
+    </div>
+</div>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const wrappers = document.querySelectorAll('.home-case-studies-left-container .img-wrapper');
+    const leftContainer = document.querySelector('.home-case-studies-left-container');
+    const rightTopImg = document.querySelector('.home-case-studies-right-top-container img');
+    const rightTopText = document.querySelector('.home-case-studies-right-top-container p');
+    const bottomCards = document.querySelectorAll('.home-case-studies-right-bottom-card');
+    function activateImage(wrapper) {
+        wrappers.forEach(w => w.classList.remove('active'));
+        wrapper.classList.add('active');
+        const bg = wrapper.getAttribute('data-bg');
+        leftContainer.style.backgroundImage = bg;
+        const rightImgSrc = wrapper.getAttribute('data-right-img');
+        const rightText = wrapper.getAttribute('data-right-text');
+        rightTopImg.src = rightImgSrc;
+        rightTopText.textContent = rightText;
+        if (bottomCards.length >= 2) {
+            bottomCards[0].querySelector('h2').innerHTML = wrapper.getAttribute('data-bottom-num1') + '<span>' + wrapper.getAttribute('data-bottom-unit1') + '</span>';
+            bottomCards[0].querySelector('p').textContent = wrapper.getAttribute('data-bottom-text1');
+            bottomCards[1].querySelector('h2').innerHTML = wrapper.getAttribute('data-bottom-num2') + '<span>' + wrapper.getAttribute('data-bottom-unit2') + '</span>';
+            bottomCards[1].querySelector('p').textContent = wrapper.getAttribute('data-bottom-text2');
+        }
+    }
+    if (wrappers.length > 0) {
+        activateImage(wrappers[0]);
+    }
+    wrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', () => activateImage(wrapper));
+    });
+});
+</script>
+ <!-- Case Studies -->
+
+ <!-- Mobile Case Studies -->
+<div class="mobile-home-case-studies-main-container">
+    <div class="mobile-home-case-studies-inner-container">
+        <h2>Case Studies</h2>
+        <p>From Concept To Market: <br> We Engineer Projects For <span> Superior Performance</span></p>
+
+        <!-- Card 1 -->
+        <div class="mobile-case-studies-faq" data-bg="url('https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=800&q=80')">
+            <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/hp-logo.svg" alt="">
+            <div class="view-more-text">View More ↓</div>
+        </div>
+        <div class="faq-extra-content">
+            <p>HP implemented a global rewards program successfully.</p>
+            <div class="faq-stats">
+                <div class="stat-box"><h3>46k</h3><p>active members</p></div>
+                <div class="stat-box"><h3>58%</h3><p>repeat customers</p></div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="mobile-case-studies-faq" data-bg="url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80')">
+            <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/xerox-logo.svg" alt="">
+            <div class="view-more-text">View More ↓</div>
+        </div>
+        <div class="faq-extra-content">
+            <p>Xerox improved workflow efficiency globally.</p>
+            <div class="faq-stats">
+                <div class="stat-box"><h3>32k</h3><p>members engaged</p></div>
+                <div class="stat-box"><h3>72%</h3><p>customer satisfaction</p></div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="mobile-case-studies-faq" data-bg="url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80')">
+            <img src="https://www.digitalsilk.com/wp-content/uploads/2022/11/doForms-logo-blue.svg" alt="">
+            <div class="view-more-text">View More ↓</div>
+        </div>
+        <div class="faq-extra-content">
+            <p>doForms digitized field data collection easily.</p>
+            <div class="faq-stats">
+                <div class="stat-box"><h3>28k</h3><p>tasks completed</p></div>
+                <div class="stat-box"><h3>85%</h3><p>success rate</p></div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="mobile-case-studies-faq" data-bg="url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80')">
+            <img src="https://www.digitalsilk.com/wp-content/uploads/2022/11/MCDS-logo-blue.svg" alt="">
+            <div class="view-more-text">View More ↓</div>
+        </div>
+        <div class="faq-extra-content">
+            <p>MCDS streamlined customer engagement programs.</p>
+            <div class="faq-stats">
+                <div class="stat-box"><h3>50k</h3><p>loyal customers</p></div>
+                <div class="stat-box"><h3>90%</h3><p>retention rate</p></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+const mobileCards = document.querySelectorAll('.mobile-case-studies-faq');
+
+mobileCards.forEach(card => {
+    // Set background
+    card.style.backgroundImage = card.getAttribute('data-bg');
+
+    card.addEventListener('click', () => {
+        const extraContent = card.nextElementSibling;
+
+        // Close all other extraContent divs
+        mobileCards.forEach(c => {
+            const content = c.nextElementSibling;
+            if(content !== extraContent){
+                content.style.transition = '';
+                content.style.maxHeight = null;
+                content.style.overflow = '';
+                content.style.display = 'none';
+            }
+        });
+
+        // Toggle clicked card
+        if(extraContent.style.display === 'flex'){
+            // Close
+            extraContent.style.transition = '';
+            extraContent.style.maxHeight = null;
+            extraContent.style.overflow = '';
+            extraContent.style.display = 'none';
+        } else {
+            // Open with animation
+            extraContent.style.display = 'flex';
+            extraContent.style.overflow = 'hidden';
+            const scrollHeight = extraContent.scrollHeight + "px";
+            extraContent.style.maxHeight = '0px';
+
+            // Allow browser to register the change
+            requestAnimationFrame(() => {
+                extraContent.style.transition = 'max-height 0.5s ease';
+                extraContent.style.maxHeight = scrollHeight;
+            });
+
+            // Remove maxHeight and overflow after animation to allow normal resizing
+            extraContent.addEventListener('transitionend', function removeMaxHeight() {
+                extraContent.style.maxHeight = '';
+                extraContent.style.overflow = '';
+                extraContent.removeEventListener('transitionend', removeMaxHeight);
+            });
+        }
+    });
+});
+</script>
+
+
+
+ <!-- Mobile Case Studies -->
+
 
 </body>
 </html>
