@@ -1169,17 +1169,21 @@ header {
 @media(max-width:600px) {
     .home-fix-right-card-left-top-container {
         height: fit-content;
+        text-align: center;
     }
 
     .home-fix-right-card-left-top-container h3 {
         font-size: 22px;
+        text-align: center;
     }
 
     .home-fix-right-card-left-top-container h1 {
-        font-size: 38px;
+        text-align: center;
+        font-size: 35px;
     }
 
     .home-fix-right-card-left-top-container p {
+        text-align: center;
         font-size: medium;
     }
 
@@ -1193,15 +1197,15 @@ header {
     }
 
     .home-fix-right-cards img {
-        height: 70px;
+        height: 60px;
     }
 
     .home-fix-right-cards h2 {
-        font-size: 26px;
+        font-size: 22px;
     }
 
     .home-fix-right-cards p {
-        font-size: 14px;
+        font-size: 13px;
     }
 }
 
