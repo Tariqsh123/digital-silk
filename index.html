@@ -709,5 +709,335 @@ mobileCards.forEach(card => {
  <!-- Mobile Case Studies -->
 
 
+ <!-- Testimonials -->
+  <section class="testimonial-section">
+  <div class="testimonial-card">
+
+    <span class="testimonial-bg-name" id="testimonial-bg-name">John</span>
+
+    <!-- LEFT -->
+    <div class="testimonial-left">
+      <img id="testimonial-logo" src="logo1.png" alt="logo">
+      <h3 id="testimonial-name">John Doe</h3>
+      <p id="testimonial-title">CEO, Company A</p>
+    </div>
+
+    <!-- CENTER ARROWS -->
+    <div class="testimonial-controls">
+      <button onclick="testimonialPrev()" id="testimonial-prev-btn">▲</button>
+      <button onclick="testimonialNext()" id="testimonial-next-btn">▼</button>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="testimonial-right">
+        <span id="testimonial-right-bg">❝</span>
+        <span id="extra-text">What Our Client Loves about our work</span>
+      <p id="testimonial-text">
+        “This product completely transformed our workflow.
+        Clean, fast and extremely reliable.”
+      </p>
+      <span id="rating">★★★★★</span>
+    </div>
+
+  </div>
+</section>
+<script>
+const testimonialData = [
+  {
+    name:"John Doe",
+    title:"CEO, Company A",
+    logo:"https://img.icons8.com/?size=100&id=YmsY6xkp6wCZ&format=png&color=FFFFFF",
+    text:"This product completely transformed our workflow. Clean, fast and extremely reliable."
+  },
+  {
+    name:"Jane Smith",
+    title:"Marketing Head, Company B",
+    logo:"https://img.icons8.com/?size=100&id=F4ZPUh2Mk5tk&format=png&color=FFFFFF",
+    text:"Outstanding support and an interface that truly feels premium."
+  },
+  {
+    name:"Mike Johnson",
+    title:"Product Manager, Company C",
+    logo:"https://img.icons8.com/?size=100&id=oGH23py7uV3P&format=png&color=FFFFFF",
+    text:"Our productivity increased instantly after using this platform."
+  }
+];
+
+let testimonialIndex = 0;
+
+const testimonialName = document.getElementById("testimonial-name");
+const testimonialTitle = document.getElementById("testimonial-title");
+const testimonialLogo = document.getElementById("testimonial-logo");
+const testimonialText = document.getElementById("testimonial-text");
+const testimonialBgName = document.getElementById("testimonial-bg-name");
+
+function testimonialUpdate(){
+  const t = testimonialData[testimonialIndex];
+  testimonialName.textContent = t.name;
+  testimonialTitle.textContent = t.title;
+  testimonialLogo.src = t.logo;
+  testimonialText.textContent = "“" + t.text + "”";
+  testimonialBgName.textContent = t.name.split(" ")[0];
+}
+
+function testimonialNext(){
+  testimonialIndex = (testimonialIndex + 1) % testimonialData.length;
+  testimonialUpdate();
+}
+
+function testimonialPrev(){
+  testimonialIndex = (testimonialIndex - 1 + testimonialData.length) % testimonialData.length;
+  testimonialUpdate();
+}
+
+testimonialUpdate();
+</script>
+
+ <!-- Testimonials  End-->
+
+ <!-- Platform -->
+  
+<section id="platforms-section">
+  <div class="platforms-container">
+
+    <!-- LEFT (STICKY) -->
+    <div class="platforms-left">
+      <h2 class="platforms-heading">
+        CMS Platform Tailored For Client Needs
+      </h2>
+
+      <p class="platforms-para">
+        No matter which Content Management System (CMS) your website utilizes,
+        our experts are here to help. We tailor our services to meet your specific
+        needs, ensuring your CMS is optimized for performance, flexibility,
+        and ease of use.
+      </p>
+
+      <img
+        src="https://www.digitalsilk.com/wp-content/uploads/2024/10/CMS-Platform-Tailored-For-Client-Needs.png.webp"
+        alt="CMS Platform"
+        class="platforms-main-image"
+      />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="platforms-right">
+
+      <!-- WORDPRESS -->
+      <div class="platforms-card platforms-card-blue">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=160&id=v9uZbuVoWleB&format=png&color=000000">
+        </div>
+        <div class="platforms-card-content">
+          <h3>WordPress</h3>
+          <p>
+            At Digital Silk, we deliver high-performance, fully customized WordPress
+            websites that align perfectly with your brand and business goals.
+            Our experts create seamless, user-friendly experiences designed to
+            drive engagement and conversions. With robust security measures and
+            ongoing support, we ensure your WordPress site remains optimized,
+            secure, and scalable as your business grows.
+          </p>
+          <a href="#" class="platforms-card-btn">WordPress Development</a>
+        </div>
+      </div>
+
+      <!-- SHOPIFY -->
+      <div class="platforms-card platforms-card-green">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=160&id=uSHYbs6PJfMT&format=png&color=000000">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Shopify</h3>
+          <p>
+            Our web design company excels in planning, developing, and scaling
+            Shopify websites to drive growth. From concept to launch, our
+            consultants guide you through every step, while our expert developers
+            and designers transform your vision into a thriving e-store.
+            We turn your ideas into a powerful online presence that fosters
+            growth and success.
+          </p>
+          <a href="#" class="platforms-card-btn">Shopify Development</a>
+        </div>
+      </div>
+
+      <!-- MAGENTO -->
+      <div class="platforms-card platforms-card-orange">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=160&id=wO7uLQ2bXGP-&format=png&color=000000">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Magento</h3>
+          <p>
+            As a top-rated Magento web development and design company, we create
+            premium online stores that attract organic traffic, deliver exceptional
+            user experiences, and significantly boost your revenue. Our expertise
+            ensures your Magento site stands out and performs at its best,
+            driving growth and success for your business.
+          </p>
+          <a href="#" class="platforms-card-btn">Magento Development</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Process Section  -->
+ <section class="process-section">
+  <div class="process-container">
+
+    <div class="process-header">
+      <h2>Website Design Process</h2>
+      <p>
+        Take a peek behind the curtain and explore the custom web design process our team follows.
+        We build custom sites for brands of all sizes that deliver measurable results.
+      </p>
+    </div>
+
+    <div class="process-wrapper">
+
+      <!-- CARD 01 -->
+      <div class="process-card">
+        <div class="progress-line"></div> <!-- TOP FILL LINE -->
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=52580&format=png&color=000000" alt="Web Strategy">
+        </div>
+
+        <h3>Web Strategy</h3>
+        <p>
+          We use in-depth research and analysis to build a plan that expands your digital
+          presence and drives growth.
+        </p>
+
+        <ul>
+          <li>Identify target audiences</li>
+          <li>User pain-points & UVPs</li>
+          <li>Define KPIs</li>
+          <li>Growth roadmap</li>
+        </ul>
+
+        <span class="process-number">01</span>
+      </div>
+
+      <!-- CARD 02 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=aoBx_xvEOlwU&format=png&color=000000" alt="Planning">
+        </div>
+
+        <h3>Planning & Architecture</h3>
+        <p>
+          We structure your website for seamless user journeys and high conversion flows.
+        </p>
+
+        <ul>
+          <li>User flows & sitemap</li>
+          <li>Wireframe creation</li>
+          <li>Consistent messaging</li>
+        </ul>
+
+        <span class="process-number">02</span>
+      </div>
+
+      <!-- CARD 03 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=44014&format=png&color=000000" alt="Design">
+        </div>
+
+        <h3>Creative Design</h3>
+        <p>
+          Award-winning visuals that bring your brand to life with clarity and impact.
+        </p>
+
+        <ul>
+          <li>Interactive UI elements</li>
+          <li>Custom illustrations</li>
+          <li>SEO & accessibility</li>
+        </ul>
+
+        <span class="process-number">03</span>
+      </div>
+
+      <!-- CARD 04 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=X-WB1cntO5xU&format=png&color=000000" alt="Development">
+        </div>
+
+        <h3>Responsive Development</h3>
+        <p>
+          We build fast, scalable websites that work flawlessly across all devices.
+        </p>
+
+        <ul>
+          <li>Flexible UI</li>
+          <li>Cross-device testing</li>
+          <li>Performance optimization</li>
+        </ul>
+
+        <span class="process-number">04</span>
+      </div>
+
+      <!-- CARD 05 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=77169&format=png&color=000000" alt="QA">
+        </div>
+
+        <h3>Quality Assurance</h3>
+        <p>
+          Every detail is tested to deliver a flawless digital experience.
+        </p>
+
+        <ul>
+          <li>Bug testing</li>
+          <li>Security checks</li>
+          <li>Client approvals</li>
+        </ul>
+
+        <span class="process-number">05</span>
+      </div>
+
+      <!-- CARD 06 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=44816&format=png&color=000000" alt="Launch">
+        </div>
+
+        <h3>Launch & Optimization</h3>
+        <p>
+          Post-launch monitoring and optimization to ensure long-term success.
+        </p>
+
+        <ul>
+          <li>Launch protocol</li>
+          <li>Ongoing maintenance</li>
+          <li>Marketing support</li>
+        </ul>
+
+        <span class="process-number">06</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
 </body>
 </html>
