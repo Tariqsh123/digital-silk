@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Trend</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html">
+    <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
+  </a>
+    <div class="nav-right-item">
+        <a href="get-started.html" class="nav-btn">Request a Demo</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+<ul>
+<li class="dropdown" id="servicesDropdown">
+    <a class="dropdown-toggle">Services <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Branding</a></li>
+        <li><a href="#">✔ Branding Services</a></li>
+        <li><a href="#">✔ Logo Design</a></li>
+        <li><a href="#">✔ Brand Identity</a></li>
+        <li><a href="#">✔ Graphic Design</a></li>
+        <li><a href="#">✔ Brand Marketing</a></li>
+        <li><a href="#">✔ Web Design</a></li>
+        <li><a href="#">✔ Custom Website Design</a></li>
+        <li><a href="#">✔ Shopify Website Design</a></li>
+        <li><a href="#">✔ WordPress Web Design</a></li>
+        <li><a href="#">✔ Magento Web Design</a></li>
+        <li><a href="#">✔ eCommerce Web Design</a></li>
+        <li><a href="#">✔ Marketing</a></li>
+        <li><a href="#">✔ Integrated Marketing Services</a></li>
+        <li><a href="#">✔ SEO</a></li>
+        <li><a href="#">✔ Social Media Marketing</a></li>
+        <li><a href="#">✔ Consulting Services</a></li>
+        <li><a href="#">✔ Before & After Designs</a></li>
+    </ul>
+</li>
+
+<li><a href="case-studies.html">Case Studies</a></li>
+
+<li class="dropdown" id="industryDropdown">
+    <a class="dropdown-toggle">Work By Industry <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Before After</a></li>
+        <li><a href="#">✔ Auto Repair Web Design</a></li>
+        <li><a href="#">✔ Bank Web Design</a></li>
+        <li><a href="#">✔ Corporate Web Design</a></li>
+        <li><a href="#">✔ Construction Web Design</a></li>
+        <li><a href="#">✔ Dental Web Design</a></li>
+        <li><a href="#">✔ Family Law Attorney Web Design</a></li>
+        <li><a href="#">✔ Financial Advisor Web Design</a></li>
+        <li><a href="#">✔ Gym Web Design</a></li>
+        <li><a href="#">✔ Healthcare Web Design</a></li>
+        <li><a href="#">✔ Hotel Web Design</a></li>
+        <li><a href="#">✔ HVAC Web Design</a></li>
+        <li><a href="#">✔ Law Firm Web Design</a></li>
+        <li><a href="#">✔ Manufacturing Web Design</a></li>
+        <li><a href="#">✔ Plumber Web Design</a></li>
+        <li><a href="#">✔ Restaurant Web Design</a></li>
+        <li><a href="#">✔ Real Estate Web Design</a></li>
+        <li><a href="#">✔ Venture Capital Web Design</a></li>
+    </ul>
+</li>
+
+<li><a href="top-companies.html">Top Companies</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="location.html">Location</a></li>
+<li><a href="digital-trend.html">Digital Trends</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact-us.html">Contact</a></li>
+<li class="mobile-btn"></li>
+</ul>
+
+</div>
+
+<script>
+const nav = document.getElementById("mainNav");
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const navBtn = document.querySelector(".nav-btn");
+const mobileBtnHolder = document.querySelector(".mobile-btn");
+const navRight = document.querySelector(".nav-right-item");
+
+function handleButtonMove(){
+    if(window.innerWidth <= 600){
+        if(!mobileBtnHolder.contains(navBtn)) mobileBtnHolder.appendChild(navBtn);
+    } else {
+        if(!navRight.contains(navBtn)) navRight.insertBefore(navBtn, navRight.firstChild);
+    }
+}
+handleButtonMove();
+window.addEventListener("resize", handleButtonMove);
+
+hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("open");
+    nav.classList.toggle("menu-open", sideMenu.classList.contains("open"));
+});
+
+const servicesDropdown = document.getElementById("servicesDropdown");
+const industryDropdown = document.getElementById("industryDropdown");
+
+function toggleDropdown(dropdown) {
+    [servicesDropdown, industryDropdown].forEach(d => {
+        if(d !== dropdown) d.classList.remove("open");
+    });
+    dropdown.classList.toggle("open");
+}
+
+servicesDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(servicesDropdown);
+});
+industryDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(industryDropdown);
+});
+
+document.addEventListener("click", (e) => {
+    if(!sideMenu.contains(e.target) && !hamburger.contains(e.target)){
+        hamburger.classList.remove("active");
+        sideMenu.classList.remove("open");
+        nav.classList.remove("menu-open");
+        servicesDropdown.classList.remove("open");
+        industryDropdown.classList.remove("open");
+    }
+});
+
+sideMenu.addEventListener("click", (e) => e.stopPropagation());
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+});
+</script>
+
+<!-- Navbar End -->
+
+<!-- Header -->
+
+<div class="top-companies-main-container">
+    <h1 id="digital-trend-h1">Digital Trend</h1>
+</div>
+<section class="companies-card-main-container">
+  <div class="companies-card-inner-container">
+
+    <!-- Tabs -->
+    <div class="digital-tabs">
+      <button class="digital-tab active" data-tab="web">Web Development</button>
+      <button class="digital-tab" data-tab="app">App Development</button>
+      <button class="digital-tab" data-tab="graphics">Graphics</button>
+      <button class="digital-tab" data-tab="marketing">Digital Marketing</button>
+    </div>
+
+    <!-- TAB CONTENT -->
+
+    <!-- Web Development -->
+    <div class="digital-tab-content active" id="web">
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Web Development</span>
+      <h3>Modern Web Development Trends</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Web Development</span>
+      <h3>Frontend Frameworks in 2026</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Web Development</span>
+      <h3>Backend Performance Optimization</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Web Development</span>
+      <h3>Web Security Best Practices</h3>
+    </div>
+  </div>
+</div>
+
+
+    <!-- App Development -->
+    <div class="digital-tab-content" id="app">
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">App Development</span>
+      <h3>Mobile App Development Trends</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1581091870627-3b5d0e6d3f1b" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">App Development</span>
+      <h3>Flutter vs React Native</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">App Development</span>
+      <h3>Cross Platform App Strategy</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1603575448365-2f6a5b8d8f74" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">App Development</span>
+      <h3>App UI UX Design Tips</h3>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Graphics -->
+    <div class="digital-tab-content" id="graphics">
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Graphics</span>
+      <h3>Creative Graphic Design Ideas</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Graphics</span>
+      <h3>Brand Identity Design</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Graphics</span>
+      <h3>Social Media Visual Trends</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Graphics</span>
+      <h3>Typography Design Inspiration</h3>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Digital Marketing -->
+    <div class="digital-tab-content" id="marketing">
+  <div class="digital-trend-card">
+    <img src="https://www.digitalsilk.com/wp-content/uploads/2025/12/generative-ai-statistics-hero-image.png.webp" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Digital Marketing</span>
+      <h3>Generative AI Marketing Stats</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Digital Marketing</span>
+      <h3>SEO Strategies for 2026</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1557838923-2985c318be48" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Digital Marketing</span>
+      <h3>Social Media Growth Hacks</h3>
+    </div>
+  </div>
+
+  <div class="digital-trend-card">
+    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a" alt="">
+    <div class="digital-card-text-container">
+      <span id="digital-trend-category">Digital Marketing</span>
+      <h3>Paid Ads Conversion Tips</h3>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+<script>
+  const tabs = document.querySelectorAll('.digital-tab');
+  const contents = document.querySelectorAll('.digital-tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+
+
+
+<!-- Newsletter -->
+<section class="newsleter">
+  <div class="newsleter-container">
+    
+    <div class="newsletter-left">
+      <h2>Sign Up To Get The Latest Digital Trends</h2>
+    </div>
+
+    <div class="newsletter-right">
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          placeholder="Enter your email address" 
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+ <section class="contact-section">
+  <div class="contact-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="contact-left">
+      <span class="contact-tagline">TAKE THE SILK ROAD TO</span>
+      <h2 class="contact-heading">
+        Digitizing Your Business<br />
+        Growth
+      </h2>
+
+      <div class="contact-social">
+        <span>Follow Us</span>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+      <h3 class="contact-form-title">Start A Conversation With Us</h3>
+
+      <form class="contact-form">
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Company Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="email" required />
+          <label>Email*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="tel" required />
+          <label>Phone*</label>
+        </div>
+
+        <div class="contact-field contact-textarea">
+          <textarea rows="3" required></textarea>
+          <label>Your Message*</label>
+        </div>
+
+        <button type="submit" class="contact-btn">
+          SUBMIT →
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-inner">
+
+    <h2 class="footer-title">Let's Grow Your Brand</h2>
+
+    <div class="footer-links">
+
+  <div class="col">
+    <h4>Branding</h4>
+    <ul>
+      <li>Branding</li>
+      <li>Branding Services</li>
+      <li>Logo Design</li>
+      <li>Brand Identity</li>
+      <li>Graphic Design</li>
+      <li>Brand Marketing</li>
+      <li>Before & After Designs</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Web Design</h4>
+    <ul>
+      <li>Web Design</li>
+      <li>Custom Website Design</li>
+      <li>Shopify Website Design</li>
+      <li>WordPress Web Design</li>
+      <li>Magento Web Design</li>
+      <li>eCommerce Web Design</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Marketing</h4>
+    <ul>
+      <li>Marketing</li>
+      <li>Integrated Marketing Services</li>
+      <li>SEO</li>
+      <li>Social Media Marketing</li>
+      <li>Consulting Services</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="index.html" style="text-decoration: none;color: white;"> Home</a></li>
+      <li><a href="about-us.html" style="text-decoration: none;color: white;"> About Us</a></li>
+      <li><a href="case-studies.html" style="text-decoration: none;color: white;"> Case Studies</a></li>
+      <li><a href="digital-trend.html" style="text-decoration: none;color: white;"> Digital Trends</a></li>
+      <li><a href="top-companies.html" style="text-decoration: none;color: white;"> Top Companies</a></li>
+      <li><a href="reviews.html" style="text-decoration: none;color: white;"> Reviews</a></li>
+      <li><a href="sitemap.html" style="text-decoration: none;color: white;"> Sitemap</a></li>
+      <li><a href="location.html" style="text-decoration: none;color: white;"> Locations</a></li>
+      <li><a href="contact-us.html" style="text-decoration: none;color: white;"> Contact Us</a></li>
+      <li><a href="get-started.html" style="text-decoration: none;color: white;"> Get Started</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+    <!-- Locations -->
+    <div class="locations">
+      <img src="images/logo.svg" class="footer-logo" alt="">
+
+      <div class="location-divider">
+      <div class="location">
+        <span class="abbr">MI</span>
+        <p><strong>Miami</strong><br>17575 Collins Avenue<br>Sunny Isles Beach, FL 33160</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">NY</span>
+        <p><strong>New York</strong><br>18 West 18th Street<br>New York, NY 10011</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CHI</span>
+        <p><strong>Chicago</strong><br>625 W Adams St<br>Chicago, IL 60661</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CA</span>
+        <p><strong>California</strong><br>600 B St<br>San Diego, CA 92101</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>©2026 Digital Silk. All rights reserved</p>
+    <!-- <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Call us at (800) 206-9413</a>
+    </div> -->
+  </div>
+</footer>
+
+
+</body>
+</html>

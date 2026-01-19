@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html">
+    <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
+  </a>
+    <div class="nav-right-item">
+        <a href="get-started.html" class="nav-btn">Request a Demo</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+<ul>
+<li class="dropdown" id="servicesDropdown">
+    <a class="dropdown-toggle">Services <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Branding</a></li>
+        <li><a href="#">✔ Branding Services</a></li>
+        <li><a href="#">✔ Logo Design</a></li>
+        <li><a href="#">✔ Brand Identity</a></li>
+        <li><a href="#">✔ Graphic Design</a></li>
+        <li><a href="#">✔ Brand Marketing</a></li>
+        <li><a href="#">✔ Web Design</a></li>
+        <li><a href="#">✔ Custom Website Design</a></li>
+        <li><a href="#">✔ Shopify Website Design</a></li>
+        <li><a href="#">✔ WordPress Web Design</a></li>
+        <li><a href="#">✔ Magento Web Design</a></li>
+        <li><a href="#">✔ eCommerce Web Design</a></li>
+        <li><a href="#">✔ Marketing</a></li>
+        <li><a href="#">✔ Integrated Marketing Services</a></li>
+        <li><a href="#">✔ SEO</a></li>
+        <li><a href="#">✔ Social Media Marketing</a></li>
+        <li><a href="#">✔ Consulting Services</a></li>
+        <li><a href="#">✔ Before & After Designs</a></li>
+    </ul>
+</li>
+
+<li><a href="case-studies.html">Case Studies</a></li>
+
+<li class="dropdown" id="industryDropdown">
+    <a class="dropdown-toggle">Work By Industry <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Before After</a></li>
+        <li><a href="#">✔ Auto Repair Web Design</a></li>
+        <li><a href="#">✔ Bank Web Design</a></li>
+        <li><a href="#">✔ Corporate Web Design</a></li>
+        <li><a href="#">✔ Construction Web Design</a></li>
+        <li><a href="#">✔ Dental Web Design</a></li>
+        <li><a href="#">✔ Family Law Attorney Web Design</a></li>
+        <li><a href="#">✔ Financial Advisor Web Design</a></li>
+        <li><a href="#">✔ Gym Web Design</a></li>
+        <li><a href="#">✔ Healthcare Web Design</a></li>
+        <li><a href="#">✔ Hotel Web Design</a></li>
+        <li><a href="#">✔ HVAC Web Design</a></li>
+        <li><a href="#">✔ Law Firm Web Design</a></li>
+        <li><a href="#">✔ Manufacturing Web Design</a></li>
+        <li><a href="#">✔ Plumber Web Design</a></li>
+        <li><a href="#">✔ Restaurant Web Design</a></li>
+        <li><a href="#">✔ Real Estate Web Design</a></li>
+        <li><a href="#">✔ Venture Capital Web Design</a></li>
+    </ul>
+</li>
+
+<li><a href="top-companies.html">Top Companies</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="location.html">Location</a></li>
+<li><a href="digital-trend.html">Digital Trends</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact-us.html">Contact</a></li>
+<li class="mobile-btn"></li>
+</ul>
+
+</div>
+
+<script>
+const nav = document.getElementById("mainNav");
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const navBtn = document.querySelector(".nav-btn");
+const mobileBtnHolder = document.querySelector(".mobile-btn");
+const navRight = document.querySelector(".nav-right-item");
+
+function handleButtonMove(){
+    if(window.innerWidth <= 600){
+        if(!mobileBtnHolder.contains(navBtn)) mobileBtnHolder.appendChild(navBtn);
+    } else {
+        if(!navRight.contains(navBtn)) navRight.insertBefore(navBtn, navRight.firstChild);
+    }
+}
+handleButtonMove();
+window.addEventListener("resize", handleButtonMove);
+
+hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("open");
+    nav.classList.toggle("menu-open", sideMenu.classList.contains("open"));
+});
+
+const servicesDropdown = document.getElementById("servicesDropdown");
+const industryDropdown = document.getElementById("industryDropdown");
+
+function toggleDropdown(dropdown) {
+    [servicesDropdown, industryDropdown].forEach(d => {
+        if(d !== dropdown) d.classList.remove("open");
+    });
+    dropdown.classList.toggle("open");
+}
+
+servicesDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(servicesDropdown);
+});
+industryDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(industryDropdown);
+});
+
+document.addEventListener("click", (e) => {
+    if(!sideMenu.contains(e.target) && !hamburger.contains(e.target)){
+        hamburger.classList.remove("active");
+        sideMenu.classList.remove("open");
+        nav.classList.remove("menu-open");
+        servicesDropdown.classList.remove("open");
+        industryDropdown.classList.remove("open");
+    }
+});
+
+sideMenu.addEventListener("click", (e) => e.stopPropagation());
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+});
+</script>
+
+<!-- Navbar End -->
+
+<!-- Header -->
+ <section id="about-us-page-header-section" class="about-us-page-header-section">
+  <div class="about-us-page-header-overlay"></div>
+
+  <div class="about-us-page-header-container">
+
+    <h2 class="about-us-page-header-subtitle">
+      Dedicated Industry Experts With Proven Track Records
+    </h2>
+
+    <h1 class="about-us-page-header-title">
+      The Team You Want On Your Project
+    </h1>
+
+    <div class="about-us-page-header-stats">
+
+      <div class="about-us-page-header-box">
+        <span class="about-us-page-header-number">Expert</span>
+        <p class="about-us-page-header-text">INDUSTRY LEADERS</p>
+      </div>
+
+      <div class="about-us-page-header-box">
+        <span class="about-us-page-header-number">150+</span>
+        <p class="about-us-page-header-text">TEAM MEMBERS</p>
+      </div>
+
+      <div class="about-us-page-header-box">
+        <span class="about-us-page-header-number">Results</span>
+        <p class="about-us-page-header-text">DRIVEN APPROACH</p>
+      </div>
+
+    </div>
+
+    <a href="#" class="about-us-page-header-btn">Get Started</a>
+
+  </div>
+</section>
+
+
+<!-- About Section -->
+ <section class="about-team-card-main-container">
+  <div class="about-team-card-inner-container">
+    <h2>Meet The Leadership Team</h2>
+    <p>Top industry with proven experience who are hands-on in managing projects</p>
+    <div class="about-team-card-container">
+  <!-- Card 1 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>John Smith</h3>
+      <p>Project Manager</p>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Emma Johnson</h3>
+      <p>UI/UX Designer</p>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Liam Brown</h3>
+      <p>Frontend Developer</p>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Olivia Davis</h3>
+      <p>Backend Developer</p>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Noah Wilson</h3>
+      <p>QA Engineer</p>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Ava Martinez</h3>
+      <p>Marketing Specialist</p>
+    </div>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>William Anderson</h3>
+      <p>HR Manager</p>
+    </div>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Sophia Thomas</h3>
+      <p>Content Writer</p>
+    </div>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>James Taylor</h3>
+      <p>SEO Specialist</p>
+    </div>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Isabella Moore</h3>
+      <p>Graphic Designer</p>
+    </div>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Benjamin Jackson</h3>
+      <p>DevOps Engineer</p>
+    </div>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Mia White</h3>
+      <p>Product Manager</p>
+    </div>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Elijah Harris</h3>
+      <p>Full Stack Developer</p>
+    </div>
+  </div>
+
+  <!-- Card 14 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Charlotte Martin</h3>
+      <p>Customer Support</p>
+    </div>
+  </div>
+
+  <!-- Card 15 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Alexander Lee</h3>
+      <p>Business Analyst</p>
+    </div>
+  </div>
+
+  <!-- Card 16 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Amelia Perez</h3>
+      <p>Social Media Manager</p>
+    </div>
+  </div>
+
+  <!-- Card 17 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Daniel Thompson</h3>
+      <p>Data Analyst</p>
+    </div>
+  </div>
+
+  <!-- Card 18 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Harper Robinson</h3>
+      <p>Marketing Manager</p>
+    </div>
+  </div>
+
+  <!-- Card 19 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Matthew Clark</h3>
+      <p>Software Architect</p>
+    </div>
+  </div>
+
+  <!-- Card 20 -->
+  <div class="team-card">
+    <img src="https://i.pinimg.com/736x/2f/15/f2/2f15f2e8c688b3120d3d26467b06330c.jpg" alt="">
+    <div class="team-overlay">
+      <h3>Evelyn Lewis</h3>
+      <p>UI Developer</p>
+    </div>
+  </div>
+
+
+
+    </div>
+  </div>
+ </section>
+
+
+ <!-- Join Our Team -->
+  <section class="about-join-our-team-main-container">
+    <div class="about-join-our-team-inner-container">
+      <h3>Got Talent?</h3>
+      <p>We are always seeking talented people with passion, experience and the ability to make a difference for our clients.</p>
+      <p>If you’re interested in joining the Digital Silk team, send your resume and cover letter to jobs@digitalsilk.com</p>
+      <h2>Join our team</h2>
+    </div>
+  </section>
+
+
+<!-- Newsletter -->
+<section class="newsleter">
+  <div class="newsleter-container">
+    
+    <div class="newsletter-left">
+      <h2>Sign Up To Get The Latest Digital Trends</h2>
+    </div>
+
+    <div class="newsletter-right">
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          placeholder="Enter your email address" 
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+ <section class="contact-section">
+  <div class="contact-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="contact-left">
+      <span class="contact-tagline">TAKE THE SILK ROAD TO</span>
+      <h2 class="contact-heading">
+        Digitizing Your Business<br />
+        Growth
+      </h2>
+
+      <div class="contact-social">
+        <span>Follow Us</span>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+      <h3 class="contact-form-title">Start A Conversation With Us</h3>
+
+      <form class="contact-form">
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Company Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="email" required />
+          <label>Email*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="tel" required />
+          <label>Phone*</label>
+        </div>
+
+        <div class="contact-field contact-textarea">
+          <textarea rows="3" required></textarea>
+          <label>Your Message*</label>
+        </div>
+
+        <button type="submit" class="contact-btn">
+          SUBMIT →
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-inner">
+
+    <h2 class="footer-title">Let's Grow Your Brand</h2>
+
+    <div class="footer-links">
+
+  <div class="col">
+    <h4>Branding</h4>
+    <ul>
+      <li>Branding</li>
+      <li>Branding Services</li>
+      <li>Logo Design</li>
+      <li>Brand Identity</li>
+      <li>Graphic Design</li>
+      <li>Brand Marketing</li>
+      <li>Before & After Designs</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Web Design</h4>
+    <ul>
+      <li>Web Design</li>
+      <li>Custom Website Design</li>
+      <li>Shopify Website Design</li>
+      <li>WordPress Web Design</li>
+      <li>Magento Web Design</li>
+      <li>eCommerce Web Design</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Marketing</h4>
+    <ul>
+      <li>Marketing</li>
+      <li>Integrated Marketing Services</li>
+      <li>SEO</li>
+      <li>Social Media Marketing</li>
+      <li>Consulting Services</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="index.html" style="text-decoration: none;color: white;"> Home</a></li>
+      <li><a href="about-us.html" style="text-decoration: none;color: white;"> About Us</a></li>
+      <li><a href="case-studies.html" style="text-decoration: none;color: white;"> Case Studies</a></li>
+      <li><a href="digital-trend.html" style="text-decoration: none;color: white;"> Digital Trends</a></li>
+      <li><a href="top-companies.html" style="text-decoration: none;color: white;"> Top Companies</a></li>
+      <li><a href="reviews.html" style="text-decoration: none;color: white;"> Reviews</a></li>
+      <li><a href="sitemap.html" style="text-decoration: none;color: white;"> Sitemap</a></li>
+      <li><a href="location.html" style="text-decoration: none;color: white;"> Locations</a></li>
+      <li><a href="contact-us.html" style="text-decoration: none;color: white;"> Contact Us</a></li>
+      <li><a href="get-started.html" style="text-decoration: none;color: white;"> Get Started</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+    <!-- Locations -->
+    <div class="locations">
+      <img src="images/logo.svg" class="footer-logo" alt="">
+
+      <div class="location-divider">
+      <div class="location">
+        <span class="abbr">MI</span>
+        <p><strong>Miami</strong><br>17575 Collins Avenue<br>Sunny Isles Beach, FL 33160</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">NY</span>
+        <p><strong>New York</strong><br>18 West 18th Street<br>New York, NY 10011</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CHI</span>
+        <p><strong>Chicago</strong><br>625 W Adams St<br>Chicago, IL 60661</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CA</span>
+        <p><strong>California</strong><br>600 B St<br>San Diego, CA 92101</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>©2026 Digital Silk. All rights reserved</p>
+    <!-- <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Call us at (800) 206-9413</a>
+    </div> -->
+  </div>
+</footer>
+
+
+</body>
+</html>

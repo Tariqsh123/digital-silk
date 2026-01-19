@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Companies</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html">
+    <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
+  </a>
+    <div class="nav-right-item">
+        <a href="get-started.html" class="nav-btn">Request a Demo</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+<ul>
+<li class="dropdown" id="servicesDropdown">
+    <a class="dropdown-toggle">Services <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Branding</a></li>
+        <li><a href="#">✔ Branding Services</a></li>
+        <li><a href="#">✔ Logo Design</a></li>
+        <li><a href="#">✔ Brand Identity</a></li>
+        <li><a href="#">✔ Graphic Design</a></li>
+        <li><a href="#">✔ Brand Marketing</a></li>
+        <li><a href="#">✔ Web Design</a></li>
+        <li><a href="#">✔ Custom Website Design</a></li>
+        <li><a href="#">✔ Shopify Website Design</a></li>
+        <li><a href="#">✔ WordPress Web Design</a></li>
+        <li><a href="#">✔ Magento Web Design</a></li>
+        <li><a href="#">✔ eCommerce Web Design</a></li>
+        <li><a href="#">✔ Marketing</a></li>
+        <li><a href="#">✔ Integrated Marketing Services</a></li>
+        <li><a href="#">✔ SEO</a></li>
+        <li><a href="#">✔ Social Media Marketing</a></li>
+        <li><a href="#">✔ Consulting Services</a></li>
+        <li><a href="#">✔ Before & After Designs</a></li>
+    </ul>
+</li>
+
+<li><a href="case-studies.html">Case Studies</a></li>
+
+<li class="dropdown" id="industryDropdown">
+    <a class="dropdown-toggle">Work By Industry <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Before After</a></li>
+        <li><a href="#">✔ Auto Repair Web Design</a></li>
+        <li><a href="#">✔ Bank Web Design</a></li>
+        <li><a href="#">✔ Corporate Web Design</a></li>
+        <li><a href="#">✔ Construction Web Design</a></li>
+        <li><a href="#">✔ Dental Web Design</a></li>
+        <li><a href="#">✔ Family Law Attorney Web Design</a></li>
+        <li><a href="#">✔ Financial Advisor Web Design</a></li>
+        <li><a href="#">✔ Gym Web Design</a></li>
+        <li><a href="#">✔ Healthcare Web Design</a></li>
+        <li><a href="#">✔ Hotel Web Design</a></li>
+        <li><a href="#">✔ HVAC Web Design</a></li>
+        <li><a href="#">✔ Law Firm Web Design</a></li>
+        <li><a href="#">✔ Manufacturing Web Design</a></li>
+        <li><a href="#">✔ Plumber Web Design</a></li>
+        <li><a href="#">✔ Restaurant Web Design</a></li>
+        <li><a href="#">✔ Real Estate Web Design</a></li>
+        <li><a href="#">✔ Venture Capital Web Design</a></li>
+    </ul>
+</li>
+
+<li><a href="top-companies.html">Top Companies</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="location.html">Location</a></li>
+<li><a href="digital-trend.html">Digital Trends</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact-us.html">Contact</a></li>
+<li class="mobile-btn"></li>
+</ul>
+
+</div>
+
+<script>
+const nav = document.getElementById("mainNav");
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const navBtn = document.querySelector(".nav-btn");
+const mobileBtnHolder = document.querySelector(".mobile-btn");
+const navRight = document.querySelector(".nav-right-item");
+
+function handleButtonMove(){
+    if(window.innerWidth <= 600){
+        if(!mobileBtnHolder.contains(navBtn)) mobileBtnHolder.appendChild(navBtn);
+    } else {
+        if(!navRight.contains(navBtn)) navRight.insertBefore(navBtn, navRight.firstChild);
+    }
+}
+handleButtonMove();
+window.addEventListener("resize", handleButtonMove);
+
+hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("open");
+    nav.classList.toggle("menu-open", sideMenu.classList.contains("open"));
+});
+
+const servicesDropdown = document.getElementById("servicesDropdown");
+const industryDropdown = document.getElementById("industryDropdown");
+
+function toggleDropdown(dropdown) {
+    [servicesDropdown, industryDropdown].forEach(d => {
+        if(d !== dropdown) d.classList.remove("open");
+    });
+    dropdown.classList.toggle("open");
+}
+
+servicesDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(servicesDropdown);
+});
+industryDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(industryDropdown);
+});
+
+document.addEventListener("click", (e) => {
+    if(!sideMenu.contains(e.target) && !hamburger.contains(e.target)){
+        hamburger.classList.remove("active");
+        sideMenu.classList.remove("open");
+        nav.classList.remove("menu-open");
+        servicesDropdown.classList.remove("open");
+        industryDropdown.classList.remove("open");
+    }
+});
+
+sideMenu.addEventListener("click", (e) => e.stopPropagation());
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+});
+</script>
+
+<!-- Navbar End -->
+
+<!-- Header -->
+
+<div class="top-companies-main-container">
+    <h1>Case Studies</h1>
+    <p>We Focus On Driving Measurable Results</p>
+</div>
+<section class="companies-card-main-container">
+    <div class="companies-card-inner-container">
+
+        <!-- 1 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Ecommerce Growth Strategy</h3>
+    <p>How we helped an ecommerce brand increase conversions and revenue.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Website Redesign Project</h3>
+    <p>A complete website redesign focused on UX and performance.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Brand Identity Revamp</h3>
+    <p>Modern branding solution for a fast-growing startup.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Mobile App Design</h3>
+    <p>User-centric mobile app design that boosted engagement.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Digital Marketing Campaign</h3>
+    <p>Data-driven campaign that delivered measurable results.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Corporate Website Build</h3>
+    <p>Scalable corporate website built for long-term growth.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="Case Study">
+  <div class="case-overlay">
+    <h3>SaaS Platform Design</h3>
+    <p>Clean and functional SaaS interface design.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Case Study">
+  <div class="case-overlay">
+    <h3>UI/UX Optimization</h3>
+    <p>Improving user journeys to increase engagement.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Startup Launch Website</h3>
+    <p>High-impact launch website for a new startup.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Product Landing Page</h3>
+    <p>Conversion-focused landing page design.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 11 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Enterprise Web Solution</h3>
+    <p>Custom enterprise-level web solution.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 12 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Marketing Website</h3>
+    <p>Visually engaging marketing website design.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 13 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Performance Optimization</h3>
+    <p>Improving site speed and performance metrics.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 14 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Creative Portfolio Site</h3>
+    <p>Minimal and modern portfolio website.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 15 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1508830524289-0adcbe822b40" alt="Case Study">
+  <div class="case-overlay">
+    <h3>UX Research Project</h3>
+    <p>User research-driven design improvements.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 16 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Content Strategy</h3>
+    <p>Strategic content planning for brand growth.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 17 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1522204501381-8c7a57f9f6b9" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Corporate Rebranding</h3>
+    <p>Complete rebranding for a corporate client.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 18 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Case Study">
+  <div class="case-overlay">
+    <h3>UX Audit & Fixes</h3>
+    <p>Identifying UX issues and implementing fixes.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 19 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Conversion Optimization</h3>
+    <p>Boosting conversions through data insights.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+<!-- 20 -->
+<div class="case-studies-card">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c" alt="Case Study">
+  <div class="case-overlay">
+    <h3>Global Brand Website</h3>
+    <p>High-end website for a global brand.</p>
+    <a href="#" class="case-btn">Learn More</a>
+  </div>
+</div>
+
+
+      
+
+    </div>
+</section>
+
+
+
+<!-- Newsletter -->
+<section class="newsleter">
+  <div class="newsleter-container">
+    
+    <div class="newsletter-left">
+      <h2>Sign Up To Get The Latest Digital Trends</h2>
+    </div>
+
+    <div class="newsletter-right">
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          placeholder="Enter your email address" 
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+ <section class="contact-section">
+  <div class="contact-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="contact-left">
+      <span class="contact-tagline">TAKE THE SILK ROAD TO</span>
+      <h2 class="contact-heading">
+        Digitizing Your Business<br />
+        Growth
+      </h2>
+
+      <div class="contact-social">
+        <span>Follow Us</span>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+      <h3 class="contact-form-title">Start A Conversation With Us</h3>
+
+      <form class="contact-form">
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Company Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="email" required />
+          <label>Email*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="tel" required />
+          <label>Phone*</label>
+        </div>
+
+        <div class="contact-field contact-textarea">
+          <textarea rows="3" required></textarea>
+          <label>Your Message*</label>
+        </div>
+
+        <button type="submit" class="contact-btn">
+          SUBMIT →
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-inner">
+
+    <h2 class="footer-title">Let's Grow Your Brand</h2>
+
+    <div class="footer-links">
+
+  <div class="col">
+    <h4>Branding</h4>
+    <ul>
+      <li>Branding</li>
+      <li>Branding Services</li>
+      <li>Logo Design</li>
+      <li>Brand Identity</li>
+      <li>Graphic Design</li>
+      <li>Brand Marketing</li>
+      <li>Before & After Designs</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Web Design</h4>
+    <ul>
+      <li>Web Design</li>
+      <li>Custom Website Design</li>
+      <li>Shopify Website Design</li>
+      <li>WordPress Web Design</li>
+      <li>Magento Web Design</li>
+      <li>eCommerce Web Design</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Marketing</h4>
+    <ul>
+      <li>Marketing</li>
+      <li>Integrated Marketing Services</li>
+      <li>SEO</li>
+      <li>Social Media Marketing</li>
+      <li>Consulting Services</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="index.html" style="text-decoration: none;color: white;"> Home</a></li>
+      <li><a href="about-us.html" style="text-decoration: none;color: white;"> About Us</a></li>
+      <li><a href="case-studies.html" style="text-decoration: none;color: white;"> Case Studies</a></li>
+      <li><a href="digital-trend.html" style="text-decoration: none;color: white;"> Digital Trends</a></li>
+      <li><a href="top-companies.html" style="text-decoration: none;color: white;"> Top Companies</a></li>
+      <li><a href="reviews.html" style="text-decoration: none;color: white;"> Reviews</a></li>
+      <li><a href="sitemap.html" style="text-decoration: none;color: white;"> Sitemap</a></li>
+      <li><a href="location.html" style="text-decoration: none;color: white;"> Locations</a></li>
+      <li><a href="contact-us.html" style="text-decoration: none;color: white;"> Contact Us</a></li>
+      <li><a href="get-started.html" style="text-decoration: none;color: white;"> Get Started</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+    <!-- Locations -->
+    <div class="locations">
+      <img src="images/logo.svg" class="footer-logo" alt="">
+
+      <div class="location-divider">
+      <div class="location">
+        <span class="abbr">MI</span>
+        <p><strong>Miami</strong><br>17575 Collins Avenue<br>Sunny Isles Beach, FL 33160</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">NY</span>
+        <p><strong>New York</strong><br>18 West 18th Street<br>New York, NY 10011</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CHI</span>
+        <p><strong>Chicago</strong><br>625 W Adams St<br>Chicago, IL 60661</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CA</span>
+        <p><strong>California</strong><br>600 B St<br>San Diego, CA 92101</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>©2026 Digital Silk. All rights reserved</p>
+    <!-- <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Call us at (800) 206-9413</a>
+    </div> -->
+  </div>
+</footer>
+
+
+</body>
+</html>
