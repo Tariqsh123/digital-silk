@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Identity</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html">
+    <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
+  </a>
+    <div class="nav-right-item">
+        <a href="get-started.html" class="nav-btn">Request a Demo</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+<ul>
+<li class="dropdown" id="servicesDropdown">
+    <a class="dropdown-toggle">Services <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="branding.html">✔ Branding</a></li>
+        <!-- <li><a href="#">✔ Branding Services</a></li> -->
+        <li><a href="logo-designing.html">✔ Logo Design</a></li>
+        <li><a href="brand-identity.html">✔ Brand Identity</a></li>
+        <li><a href="graphic-design.html">✔ Graphic Design</a></li>
+        <li><a href="brand-marketing.html">✔ Brand Marketing</a></li>
+        <li><a href="#">✔ Web Design</a></li>
+        <li><a href="#">✔ Custom Website Design</a></li>
+        <li><a href="#">✔ Shopify Website Design</a></li>
+        <li><a href="#">✔ WordPress Web Design</a></li>
+        <li><a href="#">✔ Magento Web Design</a></li>
+        <li><a href="#">✔ eCommerce Web Design</a></li>
+        <li><a href="#">✔ Marketing</a></li>
+        <li><a href="#">✔ Integrated Marketing Services</a></li>
+        <li><a href="#">✔ SEO</a></li>
+        <li><a href="#">✔ Social Media Marketing</a></li>
+        <li><a href="#">✔ Consulting Services</a></li>
+        <li><a href="before-and-after-design.html">✔ Before & After Designs</a></li>
+    </ul>
+</li>
+
+<li><a href="case-studies.html">Case Studies</a></li>
+
+<li class="dropdown" id="industryDropdown">
+    <a class="dropdown-toggle">Work By Industry <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Before After</a></li>
+        <li><a href="#">✔ Auto Repair Web Design</a></li>
+        <li><a href="#">✔ Bank Web Design</a></li>
+        <li><a href="#">✔ Corporate Web Design</a></li>
+        <li><a href="#">✔ Construction Web Design</a></li>
+        <li><a href="#">✔ Dental Web Design</a></li>
+        <li><a href="#">✔ Family Law Attorney Web Design</a></li>
+        <li><a href="#">✔ Financial Advisor Web Design</a></li>
+        <li><a href="#">✔ Gym Web Design</a></li>
+        <li><a href="#">✔ Healthcare Web Design</a></li>
+        <li><a href="#">✔ Hotel Web Design</a></li>
+        <li><a href="#">✔ HVAC Web Design</a></li>
+        <li><a href="#">✔ Law Firm Web Design</a></li>
+        <li><a href="#">✔ Manufacturing Web Design</a></li>
+        <li><a href="#">✔ Plumber Web Design</a></li>
+        <li><a href="#">✔ Restaurant Web Design</a></li>
+        <li><a href="#">✔ Real Estate Web Design</a></li>
+        <li><a href="#">✔ Venture Capital Web Design</a></li>
+    </ul>
+</li>
+
+<li><a href="top-companies.html">Top Companies</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="location.html">Location</a></li>
+<li><a href="digital-trend.html">Digital Trends</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact-us.html">Contact</a></li>
+<li class="mobile-btn"></li>
+</ul>
+
+</div>
+
+<script>
+const nav = document.getElementById("mainNav");
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const navBtn = document.querySelector(".nav-btn");
+const mobileBtnHolder = document.querySelector(".mobile-btn");
+const navRight = document.querySelector(".nav-right-item");
+
+function handleButtonMove(){
+    if(window.innerWidth <= 600){
+        if(!mobileBtnHolder.contains(navBtn)) mobileBtnHolder.appendChild(navBtn);
+    } else {
+        if(!navRight.contains(navBtn)) navRight.insertBefore(navBtn, navRight.firstChild);
+    }
+}
+handleButtonMove();
+window.addEventListener("resize", handleButtonMove);
+
+hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("open");
+    nav.classList.toggle("menu-open", sideMenu.classList.contains("open"));
+});
+
+const servicesDropdown = document.getElementById("servicesDropdown");
+const industryDropdown = document.getElementById("industryDropdown");
+
+function toggleDropdown(dropdown) {
+    [servicesDropdown, industryDropdown].forEach(d => {
+        if(d !== dropdown) d.classList.remove("open");
+    });
+    dropdown.classList.toggle("open");
+}
+
+servicesDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(servicesDropdown);
+});
+industryDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(industryDropdown);
+});
+
+document.addEventListener("click", (e) => {
+    if(!sideMenu.contains(e.target) && !hamburger.contains(e.target)){
+        hamburger.classList.remove("active");
+        sideMenu.classList.remove("open");
+        nav.classList.remove("menu-open");
+        servicesDropdown.classList.remove("open");
+        industryDropdown.classList.remove("open");
+    }
+});
+
+sideMenu.addEventListener("click", (e) => e.stopPropagation());
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+});
+</script>
+
+<!-- Navbar End -->
+
+<!-- Header -->
+ <header>
+    <!-- <video autoplay muted loop playsinline class="header-video">
+        <source src="video/header-bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> -->
+
+    <div class="header-bg">
+        <img src="https://img.freepik.com/free-photo/laptop-half-closed-dark-with-colourful-glow-glasses-paper-cup_169016-33951.jpg?semt=ais_hybrid&w=740&q=80" alt="Header Background">
+    </div>
+
+    <div class="header-text-container">
+    <h2>Expert Brand Identity Solutions</h2>
+    <h1>Build Your Brand</h1>
+    <h3>We design cohesive brand identities that clearly communicate your story and values. From logos and color palettes to typography and visual assets, we help businesses build a recognizable and consistent brand presence.</h3>
+    <a href="#" class="header-btn">Explore Our Brand Identity Services</a>
+</div>
+
+
+</header>
+
+ <!-- Our Work Section -->
+  <div class="our-work-main-container">
+    <div class="our-work-inner-container">
+       <h3>OUR WORK</h3>
+<h2>Showcasing Our Brand Identity</h2>
+<p>From unique logos to complete visual identities, we create cohesive brand designs that leave a lasting impression and help businesses connect with their audience.</p>
+
+        <!-- <div class="our-work-button-section">
+            <button data-category="feature"><i class="fas fa-star"></i>Featured</button>
+            <button data-category="b2b"><i class="fas fa-briefcase"></i>B2B</button>
+            <button data-category="b2c"><i class="fas fa-users"></i>B2C</button>
+            <button data-category="ecommerce"><i class="fas fa-shopping-cart"></i>Ecommerce</button>
+        </div> -->
+
+        <div class="our-work-card-container">
+            <!-- 1 -->
+            <div class="our-work-card feature">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="Featured Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card feature">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="Featured Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 1 -->
+            <div class="our-work-card b2b">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="B2B Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card b2b">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="B2B Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 1 -->
+            <div class="our-work-card b2c">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="B2C Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card b2c" >
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="B2C Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 1 -->
+            <div class="our-work-card ecommerce" >
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="Ecommerce Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card ecommerce" >
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="Ecommerce Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- end -->
+        </div>
+    </div>
+</div>
+
+
+
+ <div class="industries-main-section">
+    <div class="industries-inner-section">
+       <h3>Trusted by Leading Brands</h3>
+<h2>Expert Brand Identity & Logo Design</h2>
+<p>From startups to established companies,</p>
+<h3>we craft distinctive logos and cohesive visual identities that make your brand memorable and stand out in the market</h3>
+
+        <div class="industries-card-container">
+            <!-- 1 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=24662&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 2 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 3 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=UKr37LUAVwrG&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 4 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=Z8zaYhnH3xcP&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 5 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=UKr37LUAVwrG&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 6 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=Z8zaYhnH3xcP&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 7 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=24662&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 8 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
+            </div>
+        </div>
+    </div>
+ </div>
+
+ <!-- Home Fixed Right Cards -->
+  <div class="home-fix-right-card-main-container">
+    <div class="home-fix-right-card-inner-container">
+        <!-- left -->
+        <div class="home-fix-right-card-left-container">
+            <div class="home-fix-right-card-left-top-container">
+                <h3>WHY CHOOSE US?</h3>
+                <h1>Expert Brand Identity Services</h1>
+                <p>We help businesses craft strong, memorable brands. From distinctive logos to complete visual identities, our creative team ensures your brand connects with your audience and stands out in the market.</p>
+            </div>
+            <div class="home-fix-right-card-left-bottom-container">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/09/Explore-Our-Web-Design-Services-1.png.webp" alt="Branding Expertise">
+            </div>
+        </div>
+
+        <!-- right -->
+        <div class="home-fix-right-card-right-container">
+            <!-- 1 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=xyRvrIeSXuZz&format=png&color=00acfc" alt="Logo Design">
+                <h2>Logo Design</h2>
+                <p>We design unique logos that reflect your brand’s personality, leaving a strong first impression and building recognition with your audience.</p>
+            </div>
+            <!-- 2 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=MAp4tqpJBmP4&format=png&color=00acfc" alt="Brand Identity">
+                <h2>Brand Identity</h2>
+                <p>We create complete brand identities, including color palettes, typography, and visual elements, ensuring consistency and a professional look across all platforms.</p>
+            </div>
+            <!-- 3 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=D58qAA2mmwex&format=png&color=00acfc" alt="Brand Strategy">
+                <h2>Brand Strategy</h2>
+                <p>We craft strategic plans to position your brand effectively, define your voice, and connect with the right audience for long-term growth.</p>
+            </div>
+            <!-- 4 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=2799&format=png&color=00acfc" alt="Visual Design">
+                <h2>Visual Design</h2>
+                <p>Our team creates visually stunning materials, from business cards to social media graphics, to reinforce your brand identity and engage your audience.</p>
+            </div>
+            <!-- 5 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=98yud28fgLcj&format=png&color=00acfc" alt="Packaging Design">
+                <h2>Packaging & Product Design</h2>
+                <p>We design product packaging that reflects your brand values, attracts attention, and enhances customer experience on every shelf.</p>
+            </div>
+            <!-- 6 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=50565&format=png&color=00acfc" alt="Brand Guidelines">
+                <h2>Brand Guidelines</h2>
+                <p>We create detailed brand manuals to maintain consistency across all channels, helping your brand stay professional, recognizable, and cohesive.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const right = document.querySelector('.home-fix-right-card-right-container');
+
+    let isDragging = false;
+    let isHovering = false;
+    let startY, scrollTop;
+    let autoSlideSpeed = 1;
+    let direction = 1;
+    let autoSlideId = null;
+
+    function initDragAndSlide() {
+        if (autoSlideId) cancelAnimationFrame(autoSlideId);
+        if (window.innerWidth <= 1200) {
+            right.style.overflowY = 'auto';
+            right.style.cursor = 'auto';
+            right.style.scrollBehavior = 'auto';
+            return;
+        }
+        right.style.overflow = 'hidden';
+        right.style.cursor = 'grab';
+        right.style.scrollBehavior = 'smooth';
+        right.addEventListener('mousedown', dragStart);
+        right.addEventListener('mouseleave', dragEnd);
+        right.addEventListener('mouseup', dragEnd);
+        right.addEventListener('mousemove', dragMove);
+        right.addEventListener('touchstart', dragStartTouch);
+        right.addEventListener('touchmove', dragMoveTouch);
+        right.addEventListener('touchend', dragEnd);
+        right.addEventListener('mouseenter', () => { isHovering = true; });
+        right.addEventListener('mouseleave', () => { isHovering = false; });
+        autoSlide();
+    }
+    function dragStart(e) {
+        isDragging = true;
+        startY = e.pageY - right.offsetTop;
+        scrollTop = right.scrollTop;
+        right.style.cursor = 'grabbing';
+    }
+    function dragEnd() {
+        isDragging = false;
+        right.style.cursor = 'grab';
+    }
+    function dragMove(e) {
+        if (!isDragging) return;
+        const y = e.pageY - right.offsetTop;
+        right.scrollTop = scrollTop - (y - startY);
+    }
+    function dragStartTouch(e) {
+        isDragging = true;
+        startY = e.touches[0].pageY - right.offsetTop;
+        scrollTop = right.scrollTop;
+    }
+    function dragMoveTouch(e) {
+        if (!isDragging) return;
+        const y = e.touches[0].pageY - right.offsetTop;
+        right.scrollTop = scrollTop - (y - startY);
+    }
+    function autoSlide() {
+        if (!isDragging && !isHovering && window.innerWidth > 1200) {
+            right.scrollTop += autoSlideSpeed * direction;
+
+            if (right.scrollTop >= right.scrollHeight - right.clientHeight) {
+                direction = -1;
+            } else if (right.scrollTop <= 0) {
+                direction = 1;
+            }
+        }
+        autoSlideId = requestAnimationFrame(autoSlide);
+    }
+    initDragAndSlide();
+    window.addEventListener('resize', () => {
+        right.removeEventListener('mousedown', dragStart);
+        right.removeEventListener('mouseleave', dragEnd);
+        right.removeEventListener('mouseup', dragEnd);
+        right.removeEventListener('mousemove', dragMove);
+        right.removeEventListener('touchstart', dragStartTouch);
+        right.removeEventListener('touchmove', dragMoveTouch);
+        right.removeEventListener('touchend', dragEnd);
+        right.removeEventListener('mouseenter', () => { isHovering = true; });
+        right.removeEventListener('mouseleave', () => { isHovering = false; });
+        initDragAndSlide();
+    });
+});
+  </script>
+ <!-- Home Fixed Right Cards -->
+ <!-- Platform -->
+  
+<section id="platforms-section">
+  <div class="platforms-container">
+
+    <!-- LEFT (STICKY) -->
+    <div class="platforms-left">
+      <h2 class="platforms-heading">
+        Comprehensive Branding Solutions
+      </h2>
+
+      <p class="platforms-para">
+        We help businesses build strong, memorable brands that resonate with their audience.
+        From logo design and visual identity to brand strategy and marketing collateral,
+        our expert team creates cohesive branding that elevates your presence and drives results.
+      </p>
+
+      <img
+        src="https://www.digitalsilk.com/wp-content/uploads/2024/09/Explore-Our-Web-Design-Services-1.png.webp"
+        alt="Branding Services"
+        class="platforms-main-image"
+      />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="platforms-right">
+
+      <!-- LOGO DESIGN -->
+      <div class="platforms-card platforms-card-blue">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=100&id=8164&format=png&color=007bff">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Logo Design</h3>
+          <p>
+            We craft unique, memorable logos that reflect your brand’s personality
+            and values, leaving a lasting impression on your audience.
+          </p>
+          <a href="#" class="platforms-card-btn">Explore Logo Design</a>
+        </div>
+      </div>
+
+      <!-- BRAND IDENTITY -->
+      <div class="platforms-card platforms-card-green">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=100&id=i7OUy8S40wf7&format=png&color=28a745">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Brand Identity</h3>
+          <p>
+            We design cohesive brand identities that include color palettes, typography,
+            and visual elements to communicate your story consistently across all platforms.
+          </p>
+          <a href="#" class="platforms-card-btn">Discover Brand Identity</a>
+        </div>
+      </div>
+
+      <!-- BRAND STRATEGY -->
+      <div class="platforms-card platforms-card-orange">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=100&id=FJweVEY2J0Dz&format=png&color=FD7E14">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Brand Strategy</h3>
+          <p>
+            We develop strategic brand plans to position your business effectively,
+            target the right audience, and build long-term brand equity that drives growth.
+          </p>
+          <a href="#" class="platforms-card-btn">Learn About Brand Strategy</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Process Section  -->
+ <section class="process-section">
+  <div class="process-container">
+
+    <div class="process-header">
+      <h2>Branding Process</h2>
+       <p>
+        Take a peek behind the curtain and explore the step-by-step branding process our team follows.
+        We create cohesive, memorable brands that resonate with audiences and drive results.
+      </p>
+    </div>
+
+    <div class="process-wrapper">
+
+      <!-- CARD 01 -->
+      <div class="process-card">
+        <div class="progress-line"></div> <!-- TOP FILL LINE -->
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=52580&format=png&color=000000" alt="Web Strategy">
+        </div>
+
+        <h3>Strategy</h3>
+        <p>
+          We use in-depth research and analysis to build a plan that expands your digital
+          presence and drives growth.
+        </p>
+
+        <ul>
+          <li>Identify target audiences</li>
+          <li>User pain-points & UVPs</li>
+          <li>Define KPIs</li>
+          <li>Growth roadmap</li>
+        </ul>
+
+        <span class="process-number">01</span>
+      </div>
+
+      <!-- CARD 02 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=aoBx_xvEOlwU&format=png&color=000000" alt="Planning">
+        </div>
+
+        <h3>Planning & Architecture</h3>
+        <p>
+          We structure your website for seamless user journeys and high conversion flows.
+        </p>
+
+        <ul>
+          <li>User flows & sitemap</li>
+          <li>Wireframe creation</li>
+          <li>Consistent messaging</li>
+        </ul>
+
+        <span class="process-number">02</span>
+      </div>
+
+      <!-- CARD 03 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=44014&format=png&color=000000" alt="Design">
+        </div>
+
+        <h3>Creative Design</h3>
+        <p>
+          Award-winning visuals that bring your brand to life with clarity and impact.
+        </p>
+
+        <ul>
+          <li>Interactive UI elements</li>
+          <li>Custom illustrations</li>
+          <li>SEO & accessibility</li>
+        </ul>
+
+        <span class="process-number">03</span>
+      </div>
+
+      <!-- CARD 04 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=X-WB1cntO5xU&format=png&color=000000" alt="Development">
+        </div>
+
+        <h3>Responsive Development</h3>
+        <p>
+          We build fast, scalable websites that work flawlessly across all devices.
+        </p>
+
+        <ul>
+          <li>Flexible UI</li>
+          <li>Cross-device testing</li>
+          <li>Performance optimization</li>
+        </ul>
+
+        <span class="process-number">04</span>
+      </div>
+
+      <!-- CARD 05 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=77169&format=png&color=000000" alt="QA">
+        </div>
+
+        <h3>Quality Assurance</h3>
+        <p>
+          Every detail is tested to deliver a flawless digital experience.
+        </p>
+
+        <ul>
+          <li>Bug testing</li>
+          <li>Security checks</li>
+          <li>Client approvals</li>
+        </ul>
+
+        <span class="process-number">05</span>
+      </div>
+
+      <!-- CARD 06 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=44816&format=png&color=000000" alt="Launch">
+        </div>
+
+        <h3>Launch & Optimization</h3>
+        <p>
+          Post-launch monitoring and optimization to ensure long-term success.
+        </p>
+
+        <ul>
+          <li>Launch protocol</li>
+          <li>Ongoing maintenance</li>
+          <li>Marketing support</li>
+        </ul>
+
+        <span class="process-number">06</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+ <!-- Testimonials -->
+  <section class="testimonial-section">
+  <div class="testimonial-card">
+
+    <span class="testimonial-bg-name" id="testimonial-bg-name">John</span>
+
+    <!-- LEFT -->
+    <div class="testimonial-left">
+      <img id="testimonial-logo" src="logo1.png" alt="logo">
+      <h3 id="testimonial-name">John Doe</h3>
+      <p id="testimonial-title">CEO, Company A</p>
+    </div>
+
+    <!-- CENTER ARROWS -->
+    <div class="testimonial-controls">
+      <button onclick="testimonialPrev()" id="testimonial-prev-btn">▲</button>
+      <button onclick="testimonialNext()" id="testimonial-next-btn">▼</button>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="testimonial-right">
+        <span id="testimonial-right-bg">❝</span>
+        <span id="extra-text">What Our Client Loves about our work</span>
+      <p id="testimonial-text">
+        “This product completely transformed our workflow.
+        Clean, fast and extremely reliable.”
+      </p>
+      <span id="rating">★★★★★</span>
+    </div>
+
+  </div>
+</section>
+<script>
+const testimonialData = [
+  {
+    name:"John Doe",
+    title:"CEO, Company A",
+    logo:"https://img.icons8.com/?size=100&id=YmsY6xkp6wCZ&format=png&color=FFFFFF",
+    text:"This product completely transformed our workflow. Clean, fast and extremely reliable."
+  },
+  {
+    name:"Jane Smith",
+    title:"Marketing Head, Company B",
+    logo:"https://img.icons8.com/?size=100&id=F4ZPUh2Mk5tk&format=png&color=FFFFFF",
+    text:"Outstanding support and an interface that truly feels premium."
+  },
+  {
+    name:"Mike Johnson",
+    title:"Product Manager, Company C",
+    logo:"https://img.icons8.com/?size=100&id=oGH23py7uV3P&format=png&color=FFFFFF",
+    text:"Our productivity increased instantly after using this platform."
+  }
+];
+
+let testimonialIndex = 0;
+
+const testimonialName = document.getElementById("testimonial-name");
+const testimonialTitle = document.getElementById("testimonial-title");
+const testimonialLogo = document.getElementById("testimonial-logo");
+const testimonialText = document.getElementById("testimonial-text");
+const testimonialBgName = document.getElementById("testimonial-bg-name");
+
+function testimonialUpdate(){
+  const t = testimonialData[testimonialIndex];
+  testimonialName.textContent = t.name;
+  testimonialTitle.textContent = t.title;
+  testimonialLogo.src = t.logo;
+  testimonialText.textContent = "“" + t.text + "”";
+  testimonialBgName.textContent = t.name.split(" ")[0];
+}
+
+function testimonialNext(){
+  testimonialIndex = (testimonialIndex + 1) % testimonialData.length;
+  testimonialUpdate();
+}
+
+function testimonialPrev(){
+  testimonialIndex = (testimonialIndex - 1 + testimonialData.length) % testimonialData.length;
+  testimonialUpdate();
+}
+
+testimonialUpdate();
+</script>
+
+ <!-- Testimonials  End-->
+
+
+<!-- CAlculate Section -->
+ <section id="calculate-pricing" class="calculate-section">
+  <div class="calculate-container">
+    <h2 class="calculate-heading">Custom <span>Logo & Brand Identity Pricing</span></h2>
+    <p class="calculate-para">
+      Every brand identity project is unique, with different elements and deliverables that influence the final cost. 
+      Basic logo design packages typically start from $500–$1,500, while comprehensive brand identity projects, 
+      including logos, color palettes, typography, and visual assets, can range from $3,000 to $10,000 or more.
+    </p>
+    <p class="calculate-para">
+      The complexity of your brand identity needs, the number of custom design elements, and the level of strategy involved 
+      directly affect the pricing. More detailed and cohesive brand identities require a greater investment but deliver stronger results.
+    </p>
+    <button class="calculate-button">Calculate Your Brand Identity</button>
+
+    <div class="calculate-boxes">
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Scope of Services</h3>
+        <p class="calculate-box-para">
+          The range of deliverables—logos, brand guidelines, typography, color palettes, and visual assets—affects the overall cost. 
+          Larger scopes that cover multiple brand elements require more time and creative expertise.
+        </p>
+      </div>
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Custom Design Elements</h3>
+        <p class="calculate-box-para">
+          Unique, high-quality designs for logos, icons, and visual assets add value and professionalism, influencing pricing based on complexity and quantity.
+        </p>
+      </div>
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Implementation & Support</h3>
+        <p class="calculate-box-para">
+          After your brand identity is created, support for marketing materials, social media graphics, and digital assets 
+          can be included to ensure your brand is applied consistently and effectively.
+        </p>
+      </div>
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Our Expertise</h3>
+        <p class="calculate-box-para">
+          We specialize in full-service brand identity solutions for businesses of all sizes. Use our cost calculator to estimate your project, 
+          or book a consultation to receive a custom brand identity plan tailored to your business goals.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Whats Main Secton -->
+<section class="whats-main-section">
+  <div class="whats-container">
+
+    <h2>Why Invest in Professional Logo & Brand Identity?</h2>
+
+    <!-- ROW 1 -->
+    <div class="whats-row">
+      <div class="whats-box">
+        <h3><span class="whats-number">01</span> Unique Logo Design</h3>
+        <p>
+          We create logos that are distinctive, memorable, and aligned with your brand’s personality, making a strong first impression on your audience.
+        </p>
+      </div>
+
+      <div class="whats-box">
+        <h3><span class="whats-number">02</span> Cohesive Brand Identity</h3>
+        <p>
+          From color palettes to typography, we design a consistent visual identity that reflects your brand’s values and ensures recognition across all platforms.
+        </p>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="whats-row">
+      <div class="whats-box">
+        <h3><span class="whats-number">03</span> Branded Marketing Assets</h3>
+        <p>
+          We craft business cards, social media graphics, packaging, and other visual assets that reinforce your brand and make it instantly recognizable.
+        </p>
+      </div>
+
+      <div class="whats-box">
+        <h3><span class="whats-number">04</span> Strong Brand Recognition</h3>
+        <p>
+          Consistent logos and visuals help your brand stand out, build trust, and connect emotionally with your audience.
+        </p>
+      </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="whats-row">
+      <div class="whats-box">
+        <h3><span class="whats-number">05</span> Clear Brand Guidelines</h3>
+        <p>
+          We provide detailed brand guidelines to ensure your logo, colors, and fonts are applied consistently, maintaining a professional and cohesive identity everywhere.
+        </p>
+      </div>
+
+      <div class="whats-box">
+        <h3><span class="whats-number">06</span> Ongoing Design Support</h3>
+        <p>
+          Our team continues to support your brand with updates, new visual assets, and guidance to keep your logo and identity fresh and relevant as your business grows.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<!-- Location  -->
+<section class="locations-section">
+  <div class="locations-container">
+    <h2 class="locations-heading">Locations</h2>
+    <p class="locations-subheading">
+      With multiple locations throughout the United States, Digital Silk delivers localized strategies that complement your brand’s national presence.
+    </p>
+
+    <div class="locations-grid">
+
+      <!-- Card 1 - Miami -->
+      <div class="location-card location-active" style="background-image: url('https://wallpapercave.com/wp/wp2752752.jpg');">
+        <span class="location-number">01</span>
+        <h3 class="location-city">Miami</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              Digital Silk Miami delivers innovative solutions and digital strategies across the Miami market. Our local team ensures brands are represented with a localized touch that complements national campaigns.
+            </p>
+            <p><strong>Clients:</strong> Coca-Cola, Royal Caribbean, Bacardi, Miami Dolphins</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 123 Main St, Miami, FL<br>
+              <strong>Phone:</strong> (800) 123-4567
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 - Chicago -->
+      <div class="location-card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNAbtOAE4YcwXLAD_HJkm7F7S_FStPa5y9aw&s');">
+        <span class="location-number">02</span>
+        <h3 class="location-city">Chicago</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              Our Chicago office helps brands with creative and performance marketing strategies, combining analytics with design for measurable results.
+            </p>
+            <p><strong>Clients:</strong> United Airlines, Boeing, McDonald's, Allstate</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 456 Lake Shore Dr, Chicago, IL<br>
+              <strong>Phone:</strong> (800) 234-5678
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 - New York -->
+      <div class="location-card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7pDiDZi9mdvcKecbO6RT9E7Ob8hB7Cf27w&s');">
+        <span class="location-number">03</span>
+        <h3 class="location-city">New York</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              Digital Silk has taken a lasting bite out of the Big Apple, delivering measurable results for brands of all sizes. Working from a Manhattan base, our award-winning designers and developers, branding specialists and marketing experts drive end-to-end business growth.
+            </p>
+            <p><strong>Clients:</strong> Sony Rewards, doForms, Mitsui Plastics, tec5USA, Sobo & Sobo, Spar & Bernstein, BEP Analytics, Liberty Green Logistics, NewDevRev, Sandler, Bethpage Federal Credit Union, Repario Data, Retail Summits</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 18 West 18th Street, New York, NY 10011<br>
+              <strong>Phone:</strong> (800) 206-9413
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 - California -->
+      <div class="location-card" style="background-image: url('https://images.pexels.com/photos/1707823/pexels-photo-1707823.jpeg?cs=srgb&dl=pexels-misael-garcia-832776-1707823.jpg&fm=jpg');">
+        <span class="location-number">04</span>
+        <h3 class="location-city">California</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              The California office delivers end-to-end digital strategies for local and national businesses. From Los Angeles to San Francisco, we help brands engage audiences with innovative campaigns.
+            </p>
+            <p><strong>Clients:</strong> Google, Tesla, Warner Bros., Lyft</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 101 Hollywood Blvd, Los Angeles, CA<br>
+              <strong>Phone:</strong> (800) 456-7890
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const cards = document.querySelectorAll('.location-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+</script>
+
+<!-- Agency-section -->
+ <section class="agency-section">
+  <div class="agency-container">
+
+    <!-- CENTERED HEADINGS -->
+    <div class="agency-header">
+      <h3 class="agency-subheading">Finding & Working With The</h3>
+      <h2 class="agency-heading">Best Branding Agency</h2>
+    </div>
+
+    <!-- TWO COLUMN CONTENT -->
+    <div class="agency-content">
+      
+      <!-- LEFT -->
+      <div class="agency-left">
+        <p class="agency-highlight-text">
+          Whether launching a new brand or refreshing an existing identity, working with a professional branding agency gives you access to top experts in brand strategy and design.
+        </p>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="agency-right">
+        <p class="agency-para">
+          These experts use proven methods, the latest tools, and design trends to create a cohesive, memorable brand that resonates with your audience. Choosing the right branding partner ensures your brand is strategically positioned, visually impactful, and ready for long-term success.
+          <br><br>
+          Below, we’ll guide you step-by-step on how to evaluate agencies and select the best branding partner for your business.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Table Of Content -->
+<section class="table-of-content-section">
+  <div class="table-of-content-container">
+
+    <!-- MAIN HEADING -->
+    <h1 class="table-of-content-main-heading">
+      How To Find The Best Branding Agency
+    </h1>
+
+    <!-- INTRO PARAGRAPHS -->
+    <p class="table-of-content-para">
+      Whether you’re creating a brand from scratch or refining an existing one, working with a branding agency gives you access to professionals who understand strategy, visual identity, and audience engagement.
+    </p>
+
+    <p class="table-of-content-para">
+      These experts leverage modern design trends, brand strategy frameworks, and best practices to ensure your brand is consistent, memorable, and impactful.
+    </p>
+
+    <p class="table-of-content-para">
+      Follow the steps below to identify and choose the branding agency that best aligns with your brand’s vision and goals.
+    </p>
+
+    <!-- SUB HEADING -->
+    <h2 class="table-of-content-sub-heading">
+      Use this guide to evaluate potential branding agencies and select a partner who can elevate your brand.
+    </h2>
+
+    <!-- STEP 1 -->
+    <h2 class="table-of-content-step-heading">Step 1: Define Your Branding Needs</h2>
+    <p class="table-of-content-para">
+      Clearly outline your brand goals and objectives. Consider these key areas:
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Brand identity needs:</strong> Do you need a full brand from scratch, a logo refresh, or a complete visual identity overhaul?
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Design style:</strong> Are you looking for a modern, minimalistic approach, a bold and creative style, or something fully custom and unique?
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Brand objectives:</strong> Higher brand recognition, stronger market positioning, increased engagement, or cohesive marketing materials.
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Brand deliverables:</strong> Determine which assets you need: logos, brand guidelines, social media templates, packaging, and other marketing collateral.
+    </p>
+
+    <!-- STEP 2 -->
+    <h2 class="table-of-content-step-heading">Step 2: Start Your Search</h2>
+    <p class="table-of-content-para">
+      Begin by searching online, exploring portfolios, and checking B2B marketplaces. Look for agencies that specialize in branding and have experience across industries.
+    </p>
+
+    <!-- STEP 3 -->
+    <h2 class="table-of-content-step-heading">Step 3: Research & Shortlist Agencies</h2>
+    <p class="table-of-content-para">
+      Review agency case studies, previous branding projects, client testimonials, and visual style. Shortlist 3–5 agencies that align with your brand vision.
+    </p>
+
+    <!-- STEP 4 -->
+    <h2 class="table-of-content-step-heading">Step 4: Meet With The Agency(s)</h2>
+    <p class="table-of-content-para">
+      Meet your shortlisted agencies to discuss their process, team expertise, and approach to creating cohesive brand identities.
+    </p>
+
+    <!-- STEP 5 -->
+    <h2 class="table-of-content-step-heading">Step 5: Make Your Decision</h2>
+    <p class="table-of-content-para">
+      Choose the agency that demonstrates creativity, strategic thinking, transparency, and a clear roadmap to deliver a strong, memorable brand.
+    </p>
+
+    <!-- FINAL SECTION -->
+    <h2 class="table-of-content-sub-heading">
+      Why Our Branding Agency Is The Right Partner For Your Brand
+    </h2>
+
+    <p class="table-of-content-para">
+      We provide full-service branding solutions, including strategy, visual identity, and marketing collateral. Our team combines creativity and strategy to help brands grow and stand out.
+    </p>
+
+    <p class="table-of-content-para">
+      Schedule a consultation to meet our experts and receive a personalized branding plan tailored to your business goals.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- News LEtter -->
+ <section class="newsletter-section">
+  <div class="newsletter-container">
+
+    <!-- RIGHT CONTENT -->
+    <div class="newsletter-content">
+      <h2 class="newsletter-heading">Stay Ahead in 2025!</h2>
+      <h3 class="newsletter-subheading">
+        Download the Top Digital Trends Shaping Branding & Web Design
+      </h3>
+
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          class="newsletter-input"
+          placeholder="Enter Your Email"
+          required
+        />
+        <button type="submit" class="newsletter-button">
+          Download
+        </button>
+      </form>
+    </div>
+
+    <!-- LEFT IMAGE -->
+    <div class="newsletter-image-wrap">
+      <img 
+        src="https://www.digitalsilk.com/wp-content/uploads/2024/12/digitalsilk_whitepaper_2025-1536x1152.png.webp" 
+        alt="Digital Trends 2025"
+        class="newsletter-image"
+      />
+    </div>
+
+    
+
+  </div>
+</section>
+
+
+
+<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question"><span>01</span> What does a branding agency do? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          A branding agency develops your brand identity, including logo design, color palettes, typography, brand guidelines, and marketing collateral to make your brand memorable and consistent.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>02</span> What is included in brand identity design? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Brand identity design typically includes logos, color schemes, fonts, imagery style, and overall visual guidelines to ensure your brand looks cohesive across all platforms.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>03</span> Why is branding important for my business? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Branding creates recognition, builds trust, differentiates your business from competitors, and communicates your company’s values to your target audience.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>04</span> How long does it take to develop a brand? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Timelines vary depending on complexity, but a complete branding project usually takes 4–8 weeks, including strategy, logo design, and brand guidelines.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>05</span> How much does branding cost? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Costs depend on the scope of work. Simple branding packages start around $1,500–$3,000, while comprehensive brand strategies and full visual identity systems can exceed $10,000.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>06</span> Can branding improve my business growth? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Yes! Strong branding increases recognition, builds customer loyalty, supports marketing efforts, and can significantly boost business growth and sales.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>07</span> Do you provide brand refresh services? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Absolutely. We can revamp your existing brand to modernize your logo, color palette, typography, and overall visual identity for a fresh, professional look.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>08</span> Will my brand be consistent across all platforms? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Yes! We create comprehensive brand guidelines and visual assets to ensure your brand is cohesive across social media, print, digital marketing, and packaging.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>09</span> Can you design my logo? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Yes, we craft custom logos that capture your brand’s essence, are visually striking, and work seamlessly across all mediums.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const faqs = document.querySelectorAll('.faq-item');
+
+faqs.forEach(faq => {
+  faq.addEventListener('click', () => {
+    // Toggle active class
+    faq.classList.toggle('active');
+    // Close others if you want only one open at a time
+    faqs.forEach(f => {
+      if(f !== faq) f.classList.remove('active');
+    });
+  });
+});
+</script>
+
+
+<!-- Newsletter -->
+<section class="newsleter">
+  <div class="newsleter-container">
+    
+    <div class="newsletter-left">
+      <h2>Sign Up To Get The Latest Digital Trends</h2>
+    </div>
+
+    <div class="newsletter-right">
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          placeholder="Enter your email address" 
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Tabs Section -->
+ <section class="awards-section">
+  <div class="awards-container">
+
+    <h3 class="awards-subtitle">Our Experts Have Won Industry Awards</h3>
+    <h2 class="awards-title">Recognized Web Design Experts</h2>
+
+    <!-- Tabs -->
+    <div class="awards-tabs">
+      <button class="awards-tab awards-active" data-awards-tab="awards-awards">Awards</button>
+      <button class="awards-tab" data-awards-tab="awards-recognition">Recognition</button>
+      <button class="awards-tab" data-awards-tab="awards-expertise">Expertise</button>
+    </div>
+
+    <!-- Awards -->
+    <div class="awards-tab-content awards-active" id="awards-awards">
+      <div class="awards-image-grid">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/award-IMA-WHITE-1.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/12/Marcom_logo-1.png.webp" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/pngwing-1.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/horizon-interactive-awards-logo-vector-1.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Recognition -->
+    <div class="awards-tab-content" id="awards-recognition">
+      <div class="awards-image-grid">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/12/FoxNews_logo-1-120x112.png.webp" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/Vector-5.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2024/11/design-rush.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/New_Bloomberg_Logo-1.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Expertise -->
+    <div class="awards-tab-content" id="awards-expertise">
+      <div class="awards-expertise-grid">
+        <ul>
+          <li>Brand Strategy</li>
+          <li>Communication Strategy</li>
+          <li>Logo & Graphic Design</li>
+          <li>UI & UX Design</li>
+          <li>Package Design</li>
+        </ul>
+        <ul>
+          <li>Custom Web Design</li>
+          <li>eCommerce Development</li>
+          <li>Mobile App Development</li>
+          <li>Software & AI Development</li>
+          <li>ERP Portal Integration</li>
+        </ul>
+        <ul>
+          <li>Marketing Strategy</li>
+          <li>Social Media Marketing</li>
+          <li>Search Engine Optimization</li>
+          <li>Paid Media Marketing</li>
+          <li>Email Marketing</li>
+        </ul>
+        <ul>
+          <li>Creative Copywriting</li>
+          <li>Content Marketing</li>
+          <li>Influencer Marketing</li>
+          <li>Affiliate Marketing</li>
+          <li>B2B Direct Marketing</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#" class="awards-btn">View All Capabilities</a>
+
+  </div>
+</section>
+<script>
+  const awardsTabs = document.querySelectorAll('.awards-tab');
+  const awardsContents = document.querySelectorAll('.awards-tab-content');
+
+  awardsTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      awardsTabs.forEach(t => t.classList.remove('awards-active'));
+      awardsContents.forEach(c => c.classList.remove('awards-active'));
+
+      tab.classList.add('awards-active');
+      document.getElementById(tab.dataset.awardsTab)
+        .classList.add('awards-active');
+    });
+  });
+</script>
+
+
+
+
+<!-- Contact Section -->
+ <section class="contact-section">
+  <div class="contact-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="contact-left">
+      <span class="contact-tagline">TAKE THE SILK ROAD TO</span>
+      <h2 class="contact-heading">
+        Digitizing Your Business<br />
+        Growth
+      </h2>
+
+      <div class="contact-social">
+        <span>Follow Us</span>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+      <h3 class="contact-form-title">Start A Conversation With Us</h3>
+
+      <form class="contact-form">
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Company Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="email" required />
+          <label>Email*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="tel" required />
+          <label>Phone*</label>
+        </div>
+
+        <div class="contact-field contact-textarea">
+          <textarea rows="3" required></textarea>
+          <label>Your Message*</label>
+        </div>
+
+        <button type="submit" class="contact-btn">
+          SUBMIT →
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-inner">
+
+    <h2 class="footer-title">Let's Grow Your Brand</h2>
+
+    <div class="footer-links">
+
+  <div class="col">
+    <h4>Branding</h4>
+    <ul>
+      <li><a href="branding.html">Branding</a></li>
+      <!-- <li><a href="">Branding Services</a></li> -->
+      <li><a href="logo-designing.html">Logo Design</a></li>
+      <li><a href="brand-identity.html">Brand Identity</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="brand-marketing.html">Brand Marketing</a></li>
+      <li><a href="before-and-after-design.html">Before & After Designs</a></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Web Design</h4>
+    <ul>
+      <li>Web Design</li>
+      <li>Custom Website Design</li>
+      <li>Shopify Website Design</li>
+      <li>WordPress Web Design</li>
+      <li>Magento Web Design</li>
+      <li>eCommerce Web Design</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Marketing</h4>
+    <ul>
+      <li>Marketing</li>
+      <li>Integrated Marketing Services</li>
+      <li>SEO</li>
+      <li>Social Media Marketing</li>
+      <li>Consulting Services</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="index.html" style="text-decoration: none;color: white;"> Home</a></li>
+      <li><a href="about-us.html" style="text-decoration: none;color: white;"> About Us</a></li>
+      <li><a href="case-studies.html" style="text-decoration: none;color: white;"> Case Studies</a></li>
+      <li><a href="digital-trend.html" style="text-decoration: none;color: white;"> Digital Trends</a></li>
+      <li><a href="top-companies.html" style="text-decoration: none;color: white;"> Top Companies</a></li>
+      <li><a href="reviews.html" style="text-decoration: none;color: white;"> Reviews</a></li>
+      <li><a href="sitemap.html" style="text-decoration: none;color: white;"> Sitemap</a></li>
+      <li><a href="location.html" style="text-decoration: none;color: white;"> Locations</a></li>
+      <li><a href="contact-us.html" style="text-decoration: none;color: white;"> Contact Us</a></li>
+      <li><a href="get-started.html" style="text-decoration: none;color: white;"> Get Started</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+    <!-- Locations -->
+    <div class="locations">
+      <img src="images/logo.svg" class="footer-logo" alt="">
+
+      <div class="location-divider">
+      <div class="location">
+        <span class="abbr">MI</span>
+        <p><strong>Miami</strong><br>17575 Collins Avenue<br>Sunny Isles Beach, FL 33160</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">NY</span>
+        <p><strong>New York</strong><br>18 West 18th Street<br>New York, NY 10011</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CHI</span>
+        <p><strong>Chicago</strong><br>625 W Adams St<br>Chicago, IL 60661</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CA</span>
+        <p><strong>California</strong><br>600 B St<br>San Diego, CA 92101</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>©2026 Digital Silk. All rights reserved</p>
+    <!-- <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Call us at (800) 206-9413</a>
+    </div> -->
+  </div>
+</footer>
+
+
+</body>
+</html>

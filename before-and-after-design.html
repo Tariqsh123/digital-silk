@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before & After Design</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html">
+    <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
+  </a>
+    <div class="nav-right-item">
+        <a href="get-started.html" class="nav-btn">Request a Demo</a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<div class="side-menu" id="sideMenu">
+<ul>
+<li class="dropdown" id="servicesDropdown">
+    <a class="dropdown-toggle">Services <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="branding.html">✔ Branding</a></li>
+        <!-- <li><a href="#">✔ Branding Services</a></li> -->
+        <li><a href="logo-designing.html">✔ Logo Design</a></li>
+        <li><a href="brand-identity.html">✔ Brand Identity</a></li>
+        <li><a href="graphic-design.html">✔ Graphic Design</a></li>
+        <li><a href="brand-marketing.html">✔ Brand Marketing</a></li>
+        <li><a href="#">✔ Web Design</a></li>
+        <li><a href="#">✔ Custom Website Design</a></li>
+        <li><a href="#">✔ Shopify Website Design</a></li>
+        <li><a href="#">✔ WordPress Web Design</a></li>
+        <li><a href="#">✔ Magento Web Design</a></li>
+        <li><a href="#">✔ eCommerce Web Design</a></li>
+        <li><a href="#">✔ Marketing</a></li>
+        <li><a href="#">✔ Integrated Marketing Services</a></li>
+        <li><a href="#">✔ SEO</a></li>
+        <li><a href="#">✔ Social Media Marketing</a></li>
+        <li><a href="#">✔ Consulting Services</a></li>
+        <li><a href="before-and-after-design.html">✔ Before & After Designs</a></li>
+    </ul>
+</li>
+
+<li><a href="case-studies.html">Case Studies</a></li>
+
+<li class="dropdown" id="industryDropdown">
+    <a class="dropdown-toggle">Work By Industry <span class="arrow">▼</span></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">✔ Before After</a></li>
+        <li><a href="#">✔ Auto Repair Web Design</a></li>
+        <li><a href="#">✔ Bank Web Design</a></li>
+        <li><a href="#">✔ Corporate Web Design</a></li>
+        <li><a href="#">✔ Construction Web Design</a></li>
+        <li><a href="#">✔ Dental Web Design</a></li>
+        <li><a href="#">✔ Family Law Attorney Web Design</a></li>
+        <li><a href="#">✔ Financial Advisor Web Design</a></li>
+        <li><a href="#">✔ Gym Web Design</a></li>
+        <li><a href="#">✔ Healthcare Web Design</a></li>
+        <li><a href="#">✔ Hotel Web Design</a></li>
+        <li><a href="#">✔ HVAC Web Design</a></li>
+        <li><a href="#">✔ Law Firm Web Design</a></li>
+        <li><a href="#">✔ Manufacturing Web Design</a></li>
+        <li><a href="#">✔ Plumber Web Design</a></li>
+        <li><a href="#">✔ Restaurant Web Design</a></li>
+        <li><a href="#">✔ Real Estate Web Design</a></li>
+        <li><a href="#">✔ Venture Capital Web Design</a></li>
+    </ul>
+</li>
+
+<li><a href="top-companies.html">Top Companies</a></li>
+<li><a href="reviews.html">Reviews</a></li>
+<li><a href="location.html">Location</a></li>
+<li><a href="digital-trend.html">Digital Trends</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact-us.html">Contact</a></li>
+<li class="mobile-btn"></li>
+</ul>
+
+</div>
+
+<script>
+const nav = document.getElementById("mainNav");
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const navBtn = document.querySelector(".nav-btn");
+const mobileBtnHolder = document.querySelector(".mobile-btn");
+const navRight = document.querySelector(".nav-right-item");
+
+function handleButtonMove(){
+    if(window.innerWidth <= 600){
+        if(!mobileBtnHolder.contains(navBtn)) mobileBtnHolder.appendChild(navBtn);
+    } else {
+        if(!navRight.contains(navBtn)) navRight.insertBefore(navBtn, navRight.firstChild);
+    }
+}
+handleButtonMove();
+window.addEventListener("resize", handleButtonMove);
+
+hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    hamburger.classList.toggle("active");
+    sideMenu.classList.toggle("open");
+    nav.classList.toggle("menu-open", sideMenu.classList.contains("open"));
+});
+
+const servicesDropdown = document.getElementById("servicesDropdown");
+const industryDropdown = document.getElementById("industryDropdown");
+
+function toggleDropdown(dropdown) {
+    [servicesDropdown, industryDropdown].forEach(d => {
+        if(d !== dropdown) d.classList.remove("open");
+    });
+    dropdown.classList.toggle("open");
+}
+
+servicesDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(servicesDropdown);
+});
+industryDropdown.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleDropdown(industryDropdown);
+});
+
+document.addEventListener("click", (e) => {
+    if(!sideMenu.contains(e.target) && !hamburger.contains(e.target)){
+        hamburger.classList.remove("active");
+        sideMenu.classList.remove("open");
+        nav.classList.remove("menu-open");
+        servicesDropdown.classList.remove("open");
+        industryDropdown.classList.remove("open");
+    }
+});
+
+sideMenu.addEventListener("click", (e) => e.stopPropagation());
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 30) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+});
+</script>
+
+<!-- Navbar End -->
+
+<!-- Header -->
+ <header>
+    <!-- <video autoplay muted loop playsinline class="header-video">
+        <source src="video/header-bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> -->
+
+    <div class="header-bg">
+        <img src="https://img.freepik.com/free-vector/hand-drawn-diy-pattern-background_23-2150849919.jpg?semt=ais_hybrid&w=740&q=80" alt="Header Background">
+    </div>
+
+    <div class="header-text-container">
+    <h2>Before & After Design Transformations</h2>
+    <h1>See the Impact of Our Creative Work</h1>
+    <h3>Discover how we transform brands through thoughtful design. From outdated visuals to polished, professional presentations, our before-and-after projects highlight the difference our creative expertise makes for businesses.</h3>
+    <a href="#" class="header-btn">View Our Design Transformations</a>
+</div>
+
+
+
+</header>
+
+ <!-- Our Work Section -->
+  <div class="our-work-main-container">
+    <div class="our-work-inner-container">
+    <h3>OUR WORK</h3>
+<h2>Before & After Design Transformations</h2>
+<p>See how we turn ideas into visually striking results. From outdated or inconsistent visuals to polished, professional designs, our before-and-after projects demonstrate the power of thoughtful design in elevating brands and engaging audiences.</p>
+
+        <!-- <div class="our-work-button-section">
+            <button data-category="feature"><i class="fas fa-star"></i>Featured</button>
+            <button data-category="b2b"><i class="fas fa-briefcase"></i>B2B</button>
+            <button data-category="b2c"><i class="fas fa-users"></i>B2C</button>
+            <button data-category="ecommerce"><i class="fas fa-shopping-cart"></i>Ecommerce</button>
+        </div> -->
+
+        <div class="our-work-card-container">
+            <!-- 1 -->
+            <div class="our-work-card feature">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="Featured Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card feature">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="Featured Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 1 -->
+            <div class="our-work-card b2b">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="B2B Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card b2b">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="B2B Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 1 -->
+            <div class="our-work-card b2c">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="B2C Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card b2c" >
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="B2C Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 1 -->
+            <div class="our-work-card ecommerce" >
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/12/absolute-dogs-left.jpg" alt="Ecommerce Project 1">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- 2 -->
+            <div class="our-work-card ecommerce" >
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2025/11/Group-14014341-760x530.png" alt="Ecommerce Project 2">
+                <div class="overlay"><span>View Project</span></div>
+            </div>
+            <!-- end -->
+        </div>
+    </div>
+</div>
+
+
+
+ <div class="industries-main-section">
+    <div class="industries-inner-section">
+    <h3>Trusted by Leading Brands</h3>
+<h2>Before & After Design Impact</h2>
+<p>From small startups to large enterprises,</p>
+<h3>we transform outdated or inconsistent designs into polished, professional visuals that elevate your brand, captivate audiences, and leave a lasting impression</h3>
+
+
+        <div class="industries-card-container">
+            <!-- 1 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=24662&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 2 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 3 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=UKr37LUAVwrG&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 4 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=Z8zaYhnH3xcP&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 5 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=UKr37LUAVwrG&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 6 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=Z8zaYhnH3xcP&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 7 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=24662&format=png&color=FFFFFF" alt="">
+            </div>
+            <!-- 8 -->
+            <div class="industries-card">
+                <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=FFFFFF" alt="">
+            </div>
+        </div>
+    </div>
+ </div>
+
+ <!-- Home Fixed Right Cards -->
+<div class="home-fix-right-card-main-container">
+    <div class="home-fix-right-card-inner-container">
+        <!-- left -->
+        <div class="home-fix-right-card-left-container">
+            <div class="home-fix-right-card-left-top-container">
+                <h3>WHY CHOOSE DIGITAL SILK?</h3>
+                <h1>Before & After Design Services</h1>
+                <p>We transform your brand visuals from ordinary to extraordinary. From revamping logos to full visual makeovers, our creative team ensures your brand looks polished, professional, and resonates with your audience.</p>
+            </div>
+            <div class="home-fix-right-card-left-bottom-container">
+                <img src="https://www.digitalsilk.com/wp-content/uploads/2024/09/Explore-Our-Web-Design-Services-1.png.webp" alt="Before & After Design Expertise">
+            </div>
+        </div>
+
+        <!-- right -->
+        <div class="home-fix-right-card-right-container">
+            <!-- 1 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=1763&format=png&color=00acfc" alt="Visual Makeovers">
+                <h2>Visual Makeovers</h2>
+                <p>We revamp existing logos, graphics, and visuals to create a refreshed, modern look that strengthens your brand identity.</p>
+            </div>
+            <!-- 2 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=I7161PGLcNEr&format=png&color=00acfc" alt="Before & After Campaigns">
+                <h2>Before & After Campaigns</h2>
+                <p>We redesign campaign visuals, social media graphics, and promotional materials to elevate engagement and make your brand shine.</p>
+            </div>
+            <!-- 3 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=61551&format=png&color=00acfc" alt="Content Refresh">
+                <h2>Content Refresh</h2>
+                <p>We enhance blog graphics, videos, and visual content to ensure your messaging is consistent, compelling, and on-brand.</p>
+            </div>
+            <!-- 4 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=WCf4kcsJ1PWW&format=png&color=00acfc" alt="Social Media Revamp">
+                <h2>Social Media Revamp</h2>
+                <p>Our team updates social campaigns with fresh visuals and designs that grow engagement, build community, and elevate your brand image.</p>
+            </div>
+            <!-- 5 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=7OTzx1U7zZJE&format=png&color=00acfc" alt="Digital Design Optimization">
+                <h2>Digital Design Optimization</h2>
+                <p>We refine website graphics, banners, and digital assets to ensure your brand looks consistent, polished, and impactful online.</p>
+            </div>
+            <!-- 6 -->
+            <div class="home-fix-right-cards">
+                <img src="https://img.icons8.com/?size=100&id=112615&format=png&color=00acfc" alt="Performance Insights">
+                <h2>Performance Insights</h2>
+                <p>We track visual engagement metrics and provide actionable insights to continually enhance your brand’s visual impact and audience appeal.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const right = document.querySelector('.home-fix-right-card-right-container');
+
+    let isDragging = false;
+    let isHovering = false;
+    let startY, scrollTop;
+    let autoSlideSpeed = 1;
+    let direction = 1;
+    let autoSlideId = null;
+
+    function initDragAndSlide() {
+        if (autoSlideId) cancelAnimationFrame(autoSlideId);
+        if (window.innerWidth <= 1200) {
+            right.style.overflowY = 'auto';
+            right.style.cursor = 'auto';
+            right.style.scrollBehavior = 'auto';
+            return;
+        }
+        right.style.overflow = 'hidden';
+        right.style.cursor = 'grab';
+        right.style.scrollBehavior = 'smooth';
+        right.addEventListener('mousedown', dragStart);
+        right.addEventListener('mouseleave', dragEnd);
+        right.addEventListener('mouseup', dragEnd);
+        right.addEventListener('mousemove', dragMove);
+        right.addEventListener('touchstart', dragStartTouch);
+        right.addEventListener('touchmove', dragMoveTouch);
+        right.addEventListener('touchend', dragEnd);
+        right.addEventListener('mouseenter', () => { isHovering = true; });
+        right.addEventListener('mouseleave', () => { isHovering = false; });
+        autoSlide();
+    }
+    function dragStart(e) {
+        isDragging = true;
+        startY = e.pageY - right.offsetTop;
+        scrollTop = right.scrollTop;
+        right.style.cursor = 'grabbing';
+    }
+    function dragEnd() {
+        isDragging = false;
+        right.style.cursor = 'grab';
+    }
+    function dragMove(e) {
+        if (!isDragging) return;
+        const y = e.pageY - right.offsetTop;
+        right.scrollTop = scrollTop - (y - startY);
+    }
+    function dragStartTouch(e) {
+        isDragging = true;
+        startY = e.touches[0].pageY - right.offsetTop;
+        scrollTop = right.scrollTop;
+    }
+    function dragMoveTouch(e) {
+        if (!isDragging) return;
+        const y = e.touches[0].pageY - right.offsetTop;
+        right.scrollTop = scrollTop - (y - startY);
+    }
+    function autoSlide() {
+        if (!isDragging && !isHovering && window.innerWidth > 1200) {
+            right.scrollTop += autoSlideSpeed * direction;
+
+            if (right.scrollTop >= right.scrollHeight - right.clientHeight) {
+                direction = -1;
+            } else if (right.scrollTop <= 0) {
+                direction = 1;
+            }
+        }
+        autoSlideId = requestAnimationFrame(autoSlide);
+    }
+    initDragAndSlide();
+    window.addEventListener('resize', () => {
+        right.removeEventListener('mousedown', dragStart);
+        right.removeEventListener('mouseleave', dragEnd);
+        right.removeEventListener('mouseup', dragEnd);
+        right.removeEventListener('mousemove', dragMove);
+        right.removeEventListener('touchstart', dragStartTouch);
+        right.removeEventListener('touchmove', dragMoveTouch);
+        right.removeEventListener('touchend', dragEnd);
+        right.removeEventListener('mouseenter', () => { isHovering = true; });
+        right.removeEventListener('mouseleave', () => { isHovering = false; });
+        initDragAndSlide();
+    });
+});
+  </script>
+ <!-- Home Fixed Right Cards -->
+ <!-- Platform -->
+  
+<section id="platforms-section">
+  <div class="platforms-container">
+
+    <!-- LEFT (STICKY) -->
+    <div class="platforms-left">
+      <h2 class="platforms-heading">
+        Comprehensive Branding Solutions
+      </h2>
+
+      <p class="platforms-para">
+        We help businesses build strong, memorable brands that resonate with their audience.
+        From logo design and visual identity to brand strategy and marketing collateral,
+        our expert team creates cohesive branding that elevates your presence and drives results.
+      </p>
+
+      <img
+        src="https://www.digitalsilk.com/wp-content/uploads/2024/09/Explore-Our-Web-Design-Services-1.png.webp"
+        alt="Branding Services"
+        class="platforms-main-image"
+      />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="platforms-right">
+
+      <!-- LOGO DESIGN -->
+      <div class="platforms-card platforms-card-blue">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=100&id=8164&format=png&color=007bff">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Logo Design</h3>
+          <p>
+            We craft unique, memorable logos that reflect your brand’s personality
+            and values, leaving a lasting impression on your audience.
+          </p>
+          <a href="#" class="platforms-card-btn">Explore Logo Design</a>
+        </div>
+      </div>
+
+      <!-- BRAND IDENTITY -->
+      <div class="platforms-card platforms-card-green">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=100&id=i7OUy8S40wf7&format=png&color=28a745">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Brand Identity</h3>
+          <p>
+            We design cohesive brand identities that include color palettes, typography,
+            and visual elements to communicate your story consistently across all platforms.
+          </p>
+          <a href="#" class="platforms-card-btn">Discover Brand Identity</a>
+        </div>
+      </div>
+
+      <!-- BRAND STRATEGY -->
+      <div class="platforms-card platforms-card-orange">
+        <div class="platforms-card-image">
+          <img src="https://img.icons8.com/?size=100&id=FJweVEY2J0Dz&format=png&color=FD7E14">
+        </div>
+        <div class="platforms-card-content">
+          <h3>Brand Strategy</h3>
+          <p>
+            We develop strategic brand plans to position your business effectively,
+            target the right audience, and build long-term brand equity that drives growth.
+          </p>
+          <a href="#" class="platforms-card-btn">Learn About Brand Strategy</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Process Section  -->
+ <section class="process-section">
+  <div class="process-container">
+
+    <div class="process-header">
+    <h2>Before & After Design Process</h2>
+    <p>
+        Explore how we transform your visuals from ordinary to extraordinary. 
+        From redesigning logos and refreshing graphics to revamping digital and print assets, 
+        our step-by-step process ensures your brand looks polished, cohesive, and unforgettable.
+    </p>
+</div>
+
+
+
+    <div class="process-wrapper">
+
+      <!-- CARD 01 -->
+      <div class="process-card">
+        <div class="progress-line"></div> <!-- TOP FILL LINE -->
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=52580&format=png&color=000000" alt="Web Strategy">
+        </div>
+
+        <h3>Strategy</h3>
+        <p>
+          We use in-depth research and analysis to build a plan that expands your digital
+          presence and drives growth.
+        </p>
+
+        <ul>
+          <li>Identify target audiences</li>
+          <li>User pain-points & UVPs</li>
+          <li>Define KPIs</li>
+          <li>Growth roadmap</li>
+        </ul>
+
+        <span class="process-number">01</span>
+      </div>
+
+      <!-- CARD 02 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=aoBx_xvEOlwU&format=png&color=000000" alt="Planning">
+        </div>
+
+        <h3>Planning & Architecture</h3>
+        <p>
+          We structure your website for seamless user journeys and high conversion flows.
+        </p>
+
+        <ul>
+          <li>User flows & sitemap</li>
+          <li>Wireframe creation</li>
+          <li>Consistent messaging</li>
+        </ul>
+
+        <span class="process-number">02</span>
+      </div>
+
+      <!-- CARD 03 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=44014&format=png&color=000000" alt="Design">
+        </div>
+
+        <h3>Creative Design</h3>
+        <p>
+          Award-winning visuals that bring your brand to life with clarity and impact.
+        </p>
+
+        <ul>
+          <li>Interactive UI elements</li>
+          <li>Custom illustrations</li>
+          <li>SEO & accessibility</li>
+        </ul>
+
+        <span class="process-number">03</span>
+      </div>
+
+      <!-- CARD 04 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=X-WB1cntO5xU&format=png&color=000000" alt="Development">
+        </div>
+
+        <h3>Responsive Development</h3>
+        <p>
+          We build fast, scalable websites that work flawlessly across all devices.
+        </p>
+
+        <ul>
+          <li>Flexible UI</li>
+          <li>Cross-device testing</li>
+          <li>Performance optimization</li>
+        </ul>
+
+        <span class="process-number">04</span>
+      </div>
+
+      <!-- CARD 05 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=77169&format=png&color=000000" alt="QA">
+        </div>
+
+        <h3>Quality Assurance</h3>
+        <p>
+          Every detail is tested to deliver a flawless digital experience.
+        </p>
+
+        <ul>
+          <li>Bug testing</li>
+          <li>Security checks</li>
+          <li>Client approvals</li>
+        </ul>
+
+        <span class="process-number">05</span>
+      </div>
+
+      <!-- CARD 06 -->
+      <div class="process-card">
+        <div class="progress-line"></div>
+
+        <div class="process-image">
+          <img src="https://img.icons8.com/?size=100&id=44816&format=png&color=000000" alt="Launch">
+        </div>
+
+        <h3>Launch & Optimization</h3>
+        <p>
+          Post-launch monitoring and optimization to ensure long-term success.
+        </p>
+
+        <ul>
+          <li>Launch protocol</li>
+          <li>Ongoing maintenance</li>
+          <li>Marketing support</li>
+        </ul>
+
+        <span class="process-number">06</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+ <!-- Testimonials -->
+  <section class="testimonial-section">
+  <div class="testimonial-card">
+
+    <span class="testimonial-bg-name" id="testimonial-bg-name">John</span>
+
+    <!-- LEFT -->
+    <div class="testimonial-left">
+      <img id="testimonial-logo" src="logo1.png" alt="logo">
+      <h3 id="testimonial-name">John Doe</h3>
+      <p id="testimonial-title">CEO, Company A</p>
+    </div>
+
+    <!-- CENTER ARROWS -->
+    <div class="testimonial-controls">
+      <button onclick="testimonialPrev()" id="testimonial-prev-btn">▲</button>
+      <button onclick="testimonialNext()" id="testimonial-next-btn">▼</button>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="testimonial-right">
+        <span id="testimonial-right-bg">❝</span>
+        <span id="extra-text">What Our Client Loves about our work</span>
+      <p id="testimonial-text">
+        “This product completely transformed our workflow.
+        Clean, fast and extremely reliable.”
+      </p>
+      <span id="rating">★★★★★</span>
+    </div>
+
+  </div>
+</section>
+<script>
+const testimonialData = [
+  {
+    name:"John Doe",
+    title:"CEO, Company A",
+    logo:"https://img.icons8.com/?size=100&id=YmsY6xkp6wCZ&format=png&color=FFFFFF",
+    text:"This product completely transformed our workflow. Clean, fast and extremely reliable."
+  },
+  {
+    name:"Jane Smith",
+    title:"Marketing Head, Company B",
+    logo:"https://img.icons8.com/?size=100&id=F4ZPUh2Mk5tk&format=png&color=FFFFFF",
+    text:"Outstanding support and an interface that truly feels premium."
+  },
+  {
+    name:"Mike Johnson",
+    title:"Product Manager, Company C",
+    logo:"https://img.icons8.com/?size=100&id=oGH23py7uV3P&format=png&color=FFFFFF",
+    text:"Our productivity increased instantly after using this platform."
+  }
+];
+
+let testimonialIndex = 0;
+
+const testimonialName = document.getElementById("testimonial-name");
+const testimonialTitle = document.getElementById("testimonial-title");
+const testimonialLogo = document.getElementById("testimonial-logo");
+const testimonialText = document.getElementById("testimonial-text");
+const testimonialBgName = document.getElementById("testimonial-bg-name");
+
+function testimonialUpdate(){
+  const t = testimonialData[testimonialIndex];
+  testimonialName.textContent = t.name;
+  testimonialTitle.textContent = t.title;
+  testimonialLogo.src = t.logo;
+  testimonialText.textContent = "“" + t.text + "”";
+  testimonialBgName.textContent = t.name.split(" ")[0];
+}
+
+function testimonialNext(){
+  testimonialIndex = (testimonialIndex + 1) % testimonialData.length;
+  testimonialUpdate();
+}
+
+function testimonialPrev(){
+  testimonialIndex = (testimonialIndex - 1 + testimonialData.length) % testimonialData.length;
+  testimonialUpdate();
+}
+
+testimonialUpdate();
+</script>
+
+ <!-- Testimonials  End-->
+
+
+<!-- CAlculate Section -->
+<section id="calculate-pricing" class="calculate-section">
+  <div class="calculate-container">
+    <h2 class="calculate-heading">Custom Before & After Design Pricing For Each <span>Project</span></h2>
+    <p class="calculate-para">
+      Every design transformation project is unique, with different elements and deliverables that determine the final cost. 
+      Basic redesign packages typically start from $500 to $1,500, while comprehensive before & after design projects, 
+      including logo updates, visual revamps, graphics, and digital assets, can reach $3,000 or more.
+    </p>
+    <p class="calculate-para">
+      The complexity of your design needs, the number of assets, and the level of customization 
+      directly impact pricing. More detailed and extensive transformations naturally require a larger investment.
+    </p>
+    <button class="calculate-button">Calculate Your Design Project</button>
+
+    <div class="calculate-boxes">
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Scope of Design</h3>
+        <p class="calculate-box-para">
+          The range of deliverables—logos, graphics, website visuals, print materials, and social media assets—affects the overall cost. 
+          Larger scopes covering multiple design elements require more time and creative expertise.
+        </p>
+      </div>
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Custom Design Elements</h3>
+        <p class="calculate-box-para">
+          Tailored graphics, color schemes, and typography for your brand add value and visual appeal, 
+          influencing pricing based on complexity and quantity of assets.
+        </p>
+      </div>
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Implementation & Support</h3>
+        <p class="calculate-box-para">
+          Post-design support, including asset optimization, formatting, and guidance for consistent usage, 
+          ensures your brand’s visuals are applied effectively across all platforms.
+        </p>
+      </div>
+      <div class="calculate-box">
+        <h3 class="calculate-box-heading">Our Expertise</h3>
+        <p class="calculate-box-para">
+          We specialize in full-service before & after design solutions for brands of all sizes. 
+          Use our cost calculator to estimate your project, or book a consultation to plan your visual transformation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Whats Main Secton -->
+<section class="whats-main-section">
+  <div class="whats-container">
+
+    <h2>Why Invest in Professional Before & After Design?</h2>
+
+    <!-- ROW 1 -->
+    <div class="whats-row">
+      <div class="whats-box">
+        <h3><span class="whats-number">01</span> Transform Your Visual Identity</h3>
+        <p>
+          We revamp your brand’s visuals, from logos and graphics to digital assets, creating a refreshed, professional, and cohesive look that captivates your audience.
+        </p>
+      </div>
+
+      <div class="whats-box">
+        <h3><span class="whats-number">02</span> Enhance Audience Engagement</h3>
+        <p>
+          Our team designs striking before & after visuals and assets that grab attention, tell your brand story, and make a lasting impression on viewers.
+        </p>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="whats-row">
+      <div class="whats-box">
+        <h3><span class="whats-number">03</span> Multi-Platform Design Updates</h3>
+        <p>
+          We create cohesive design transformations across websites, social media, marketing materials, and packaging, ensuring a consistent and professional brand presence everywhere.
+        </p>
+      </div>
+
+      <div class="whats-box">
+        <h3><span class="whats-number">04</span> Strengthen Brand Recognition</h3>
+        <p>
+          Clear, refreshed visuals help your brand stand out, increase memorability, and leave a stronger impact on both existing and new audiences.
+        </p>
+      </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="whats-row">
+      <div class="whats-box">
+        <h3><span class="whats-number">05</span> Data-Informed Design Choices</h3>
+        <p>
+          We analyze audience response and design performance to optimize your visual updates, ensuring each transformation drives engagement and meets your goals.
+        </p>
+      </div>
+
+      <div class="whats-box">
+        <h3><span class="whats-number">06</span> Ongoing Design Support</h3>
+        <p>
+          Our team provides continuous updates, fresh visuals, and guidance to keep your brand’s appearance current, appealing, and impactful over time.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- Location  -->
+<section class="locations-section">
+  <div class="locations-container">
+    <h2 class="locations-heading">Locations</h2>
+    <p class="locations-subheading">
+      With multiple locations throughout the United States, Digital Silk delivers localized strategies that complement your brand’s national presence.
+    </p>
+
+    <div class="locations-grid">
+
+      <!-- Card 1 - Miami -->
+      <div class="location-card location-active" style="background-image: url('https://wallpapercave.com/wp/wp2752752.jpg');">
+        <span class="location-number">01</span>
+        <h3 class="location-city">Miami</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              Digital Silk Miami delivers innovative solutions and digital strategies across the Miami market. Our local team ensures brands are represented with a localized touch that complements national campaigns.
+            </p>
+            <p><strong>Clients:</strong> Coca-Cola, Royal Caribbean, Bacardi, Miami Dolphins</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 123 Main St, Miami, FL<br>
+              <strong>Phone:</strong> (800) 123-4567
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 - Chicago -->
+      <div class="location-card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNAbtOAE4YcwXLAD_HJkm7F7S_FStPa5y9aw&s');">
+        <span class="location-number">02</span>
+        <h3 class="location-city">Chicago</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              Our Chicago office helps brands with creative and performance marketing strategies, combining analytics with design for measurable results.
+            </p>
+            <p><strong>Clients:</strong> United Airlines, Boeing, McDonald's, Allstate</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 456 Lake Shore Dr, Chicago, IL<br>
+              <strong>Phone:</strong> (800) 234-5678
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 - New York -->
+      <div class="location-card" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY7pDiDZi9mdvcKecbO6RT9E7Ob8hB7Cf27w&s');">
+        <span class="location-number">03</span>
+        <h3 class="location-city">New York</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              Digital Silk has taken a lasting bite out of the Big Apple, delivering measurable results for brands of all sizes. Working from a Manhattan base, our award-winning designers and developers, branding specialists and marketing experts drive end-to-end business growth.
+            </p>
+            <p><strong>Clients:</strong> Sony Rewards, doForms, Mitsui Plastics, tec5USA, Sobo & Sobo, Spar & Bernstein, BEP Analytics, Liberty Green Logistics, NewDevRev, Sandler, Bethpage Federal Credit Union, Repario Data, Retail Summits</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 18 West 18th Street, New York, NY 10011<br>
+              <strong>Phone:</strong> (800) 206-9413
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 - California -->
+      <div class="location-card" style="background-image: url('https://images.pexels.com/photos/1707823/pexels-photo-1707823.jpeg?cs=srgb&dl=pexels-misael-garcia-832776-1707823.jpg&fm=jpg');">
+        <span class="location-number">04</span>
+        <h3 class="location-city">California</h3>
+        <div class="location-extra">
+          <div class="location-text">
+            <p>
+              The California office delivers end-to-end digital strategies for local and national businesses. From Los Angeles to San Francisco, we help brands engage audiences with innovative campaigns.
+            </p>
+            <p><strong>Clients:</strong> Google, Tesla, Warner Bros., Lyft</p>
+          </div>
+          <div class="location-contact">
+            <p>
+              <strong>Address:</strong> 101 Hollywood Blvd, Los Angeles, CA<br>
+              <strong>Phone:</strong> (800) 456-7890
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const cards = document.querySelectorAll('.location-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    cards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+</script>
+
+<!-- Agency-section -->
+<section class="agency-section">
+  <div class="agency-container">
+
+    <!-- CENTERED HEADINGS -->
+    <div class="agency-header">
+      <h3 class="agency-subheading">Working With The</h3>
+      <h2 class="agency-heading">Best Before & After Design Experts</h2>
+    </div>
+
+    <!-- TWO COLUMN CONTENT -->
+    <div class="agency-content">
+      
+      <!-- LEFT -->
+      <div class="agency-left">
+        <p class="agency-highlight-text">
+          Whether refreshing your visuals or transforming your entire brand appearance, partnering with professional Before & After design experts gives you access to top creative talent and design strategies.
+        </p>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="agency-right">
+        <p class="agency-para">
+          Our team uses the latest design tools, visual storytelling techniques, and proven methods to craft striking before & after transformations that captivate your audience. Choosing the right design partner ensures your brand looks modern, cohesive, and ready to make a lasting impression.
+          <br><br>
+          Below, we’ll walk you step-by-step on how to evaluate design agencies and select the best partner for your visual transformation projects.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Table Of Content -->
+<section class="table-of-content-section">
+  <div class="table-of-content-container">
+
+    <!-- MAIN HEADING -->
+    <h1 class="table-of-content-main-heading">
+      How To Choose the Right Before & After Design Agency
+    </h1>
+
+    <!-- INTRO PARAGRAPHS -->
+    <p class="table-of-content-para">
+      Whether you’re giving your brand a full visual overhaul or updating specific elements, working with a design agency ensures professional guidance, expert execution, and cohesive results.
+    </p>
+
+    <p class="table-of-content-para">
+      Experienced agencies apply modern design trends, visual storytelling principles, and creative frameworks to make your brand transformation impactful and memorable.
+    </p>
+
+    <p class="table-of-content-para">
+      Follow the steps below to identify and select the design agency that aligns with your goals and vision for visual transformation.
+    </p>
+
+    <!-- SUB HEADING -->
+    <h2 class="table-of-content-sub-heading">
+      Use this guide to evaluate potential agencies and choose a partner who can deliver stunning before & after designs.
+    </h2>
+
+    <!-- STEP 1 -->
+    <h2 class="table-of-content-step-heading">Step 1: Define Your Design Needs</h2>
+    <p class="table-of-content-para">
+      Clearly outline your visual transformation goals. Consider these key areas:
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Visual scope:</strong> Are you refreshing select assets, creating a full before & after redesign, or updating digital and print materials?
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Design style:</strong> Do you prefer minimalistic, bold, creative, or fully custom visual styles?
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Objectives:</strong> Enhance brand appeal, boost engagement, modernize visuals, or increase recognition.
+    </p>
+
+    <p class="table-of-content-para">
+      <strong>Deliverables:</strong> Identify what you need: before & after images, social media visuals, marketing materials, or website graphics.
+    </p>
+
+    <!-- STEP 2 -->
+    <h2 class="table-of-content-step-heading">Step 2: Begin Your Search</h2>
+    <p class="table-of-content-para">
+      Explore portfolios, websites, and design marketplaces. Look for agencies specializing in before & after transformations with experience across industries.
+    </p>
+
+    <!-- STEP 3 -->
+    <h2 class="table-of-content-step-heading">Step 3: Shortlist & Evaluate Agencies</h2>
+    <p class="table-of-content-para">
+      Review previous before & after projects, client feedback, and design quality. Shortlist 3–5 agencies that align with your style and project goals.
+    </p>
+
+    <!-- STEP 4 -->
+    <h2 class="table-of-content-step-heading">Step 4: Meet & Discuss</h2>
+    <p class="table-of-content-para">
+      Meet your shortlisted agencies to discuss their creative process, tools, and approach to before & after design transformations.
+    </p>
+
+    <!-- STEP 5 -->
+    <h2 class="table-of-content-step-heading">Step 5: Make Your Choice</h2>
+    <p class="table-of-content-para">
+      Select the agency that demonstrates creativity, technical skill, transparency, and a clear plan to execute your visual transformation effectively.
+    </p>
+
+    <!-- FINAL SECTION -->
+    <h2 class="table-of-content-sub-heading">
+      Why Our Before & After Design Agency Is Your Ideal Partner
+    </h2>
+
+    <p class="table-of-content-para">
+      We offer full-service before & after design solutions, including digital assets, marketing visuals, and creative transformations. Our team combines artistry and strategy to deliver striking results that resonate with your audience.
+    </p>
+
+    <p class="table-of-content-para">
+      Schedule a consultation to meet our experts and receive a tailored visual transformation plan for your brand.
+    </p>
+
+  </div>
+</section>
+
+
+
+<!-- News LEtter -->
+ <section class="newsletter-section">
+  <div class="newsletter-container">
+
+    <!-- RIGHT CONTENT -->
+    <div class="newsletter-content">
+      <h2 class="newsletter-heading">Stay Ahead in 2025!</h2>
+      <h3 class="newsletter-subheading">
+        Download the Top Digital Trends Shaping Branding & Web Design
+      </h3>
+
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          class="newsletter-input"
+          placeholder="Enter Your Email"
+          required
+        />
+        <button type="submit" class="newsletter-button">
+          Download
+        </button>
+      </form>
+    </div>
+
+    <!-- LEFT IMAGE -->
+    <div class="newsletter-image-wrap">
+      <img 
+        src="https://www.digitalsilk.com/wp-content/uploads/2024/12/digitalsilk_whitepaper_2025-1536x1152.png.webp" 
+        alt="Digital Trends 2025"
+        class="newsletter-image"
+      />
+    </div>
+
+    
+
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question"><span>01</span> What is a Before & After Design service? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Before & After Design services visually transform your assets, showing the evolution of your brand, product, or campaign. This can include image enhancements, graphic redesigns, and updated visual storytelling for maximum impact.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>02</span> What is included in a Before & After Design project? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          These projects typically include redesigns of images, graphics, or visuals, visual storytelling elements, and style enhancements to ensure a cohesive and striking transformation across all platforms.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>03</span> Why are Before & After Designs important for my business? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Before & After visuals clearly showcase improvements, highlight value, and engage your audience. They are powerful tools for marketing, social media, and demonstrating your brand’s growth or product enhancements.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>04</span> How long does a Before & After Design project take? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Timelines vary based on complexity and the number of assets, but most projects are completed within 1–4 weeks, including concept, design, and revisions.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>05</span> How much do Before & After Designs cost? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Costs depend on the scope and number of visuals. Simple transformations start around $500–$1,500, while comprehensive visual overhauls can range from $3,000 and up.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>06</span> Can Before & After Designs boost my marketing results? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Absolutely! High-quality before & after visuals capture attention, demonstrate improvements, and increase engagement, making them highly effective for social media, campaigns, and promotional content.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>07</span> Do you provide redesign or refresh services? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Yes! We can revamp existing visuals, images, or designs to create striking before & after transformations that enhance your brand’s appeal and visual storytelling.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>08</span> Will my visuals remain consistent across platforms? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Yes! We ensure consistency by maintaining a unified style, color palette, and design approach across social media, digital ads, websites, and marketing materials.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question"><span>09</span> Can you create custom before & after images for my brand? <span class="faq-arrow">&#9660;</span></div>
+        <div class="faq-answer">
+          Yes, we design tailored before & after visuals that highlight your brand’s evolution, products, or services, ensuring maximum visual impact and audience engagement.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+const faqs = document.querySelectorAll('.faq-item');
+
+faqs.forEach(faq => {
+  faq.addEventListener('click', () => {
+    // Toggle active class
+    faq.classList.toggle('active');
+    // Close others if you want only one open at a time
+    faqs.forEach(f => {
+      if(f !== faq) f.classList.remove('active');
+    });
+  });
+});
+</script>
+
+
+<!-- Newsletter -->
+<section class="newsleter">
+  <div class="newsleter-container">
+    
+    <div class="newsletter-left">
+      <h2>Sign Up To Get The Latest Digital Trends</h2>
+    </div>
+
+    <div class="newsletter-right">
+      <form class="newsletter-form">
+        <input 
+          type="email" 
+          placeholder="Enter your email address" 
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Tabs Section -->
+ <section class="awards-section">
+  <div class="awards-container">
+
+    <h3 class="awards-subtitle">Our Experts Have Won Industry Awards</h3>
+    <h2 class="awards-title">Recognized Web Design Experts</h2>
+
+    <!-- Tabs -->
+    <div class="awards-tabs">
+      <button class="awards-tab awards-active" data-awards-tab="awards-awards">Awards</button>
+      <button class="awards-tab" data-awards-tab="awards-recognition">Recognition</button>
+      <button class="awards-tab" data-awards-tab="awards-expertise">Expertise</button>
+    </div>
+
+    <!-- Awards -->
+    <div class="awards-tab-content awards-active" id="awards-awards">
+      <div class="awards-image-grid">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/award-IMA-WHITE-1.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/12/Marcom_logo-1.png.webp" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/pngwing-1.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/horizon-interactive-awards-logo-vector-1.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Recognition -->
+    <div class="awards-tab-content" id="awards-recognition">
+      <div class="awards-image-grid">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/12/FoxNews_logo-1-120x112.png.webp" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/Vector-5.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2024/11/design-rush.svg" alt="">
+        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/New_Bloomberg_Logo-1.svg" alt="">
+      </div>
+    </div>
+
+    <!-- Expertise -->
+    <div class="awards-tab-content" id="awards-expertise">
+      <div class="awards-expertise-grid">
+        <ul>
+          <li>Brand Strategy</li>
+          <li>Communication Strategy</li>
+          <li>Logo & Graphic Design</li>
+          <li>UI & UX Design</li>
+          <li>Package Design</li>
+        </ul>
+        <ul>
+          <li>Custom Web Design</li>
+          <li>eCommerce Development</li>
+          <li>Mobile App Development</li>
+          <li>Software & AI Development</li>
+          <li>ERP Portal Integration</li>
+        </ul>
+        <ul>
+          <li>Marketing Strategy</li>
+          <li>Social Media Marketing</li>
+          <li>Search Engine Optimization</li>
+          <li>Paid Media Marketing</li>
+          <li>Email Marketing</li>
+        </ul>
+        <ul>
+          <li>Creative Copywriting</li>
+          <li>Content Marketing</li>
+          <li>Influencer Marketing</li>
+          <li>Affiliate Marketing</li>
+          <li>B2B Direct Marketing</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#" class="awards-btn">View All Capabilities</a>
+
+  </div>
+</section>
+<script>
+  const awardsTabs = document.querySelectorAll('.awards-tab');
+  const awardsContents = document.querySelectorAll('.awards-tab-content');
+
+  awardsTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      awardsTabs.forEach(t => t.classList.remove('awards-active'));
+      awardsContents.forEach(c => c.classList.remove('awards-active'));
+
+      tab.classList.add('awards-active');
+      document.getElementById(tab.dataset.awardsTab)
+        .classList.add('awards-active');
+    });
+  });
+</script>
+
+
+
+
+<!-- Contact Section -->
+ <section class="contact-section">
+  <div class="contact-container">
+
+    <!-- LEFT CONTENT -->
+    <div class="contact-left">
+      <span class="contact-tagline">TAKE THE SILK ROAD TO</span>
+      <h2 class="contact-heading">
+        Digitizing Your Business<br />
+        Growth
+      </h2>
+
+      <div class="contact-social">
+        <span>Follow Us</span>
+        <a href="#" aria-label="Instagram">◎</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="contact-right">
+      <h3 class="contact-form-title">Start A Conversation With Us</h3>
+
+      <form class="contact-form">
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="text" required />
+          <label>Company Name*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="email" required />
+          <label>Email*</label>
+        </div>
+
+        <div class="contact-field">
+          <input type="tel" required />
+          <label>Phone*</label>
+        </div>
+
+        <div class="contact-field contact-textarea">
+          <textarea rows="3" required></textarea>
+          <label>Your Message*</label>
+        </div>
+
+        <button type="submit" class="contact-btn">
+          SUBMIT →
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Footer -->
+ <footer class="footer">
+  <div class="footer-inner">
+
+    <h2 class="footer-title">Let's Grow Your Brand</h2>
+
+    <div class="footer-links">
+
+  <div class="col">
+    <h4>Branding</h4>
+    <ul>
+      <li><a href="branding.html">Branding</a></li>
+      <!-- <li><a href="">Branding Services</a></li> -->
+      <li><a href="logo-designing.html">Logo Design</a></li>
+      <li><a href="brand-identity.html">Brand Identity</a></li>
+      <li><a href="graphic-design.html">Graphic Design</a></li>
+      <li><a href="brand-marketing.html">Brand Marketing</a></li>
+      <li><a href="before-and-after-design.html">Before & After Designs</a></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Web Design</h4>
+    <ul>
+      <li>Web Design</li>
+      <li>Custom Website Design</li>
+      <li>Shopify Website Design</li>
+      <li>WordPress Web Design</li>
+      <li>Magento Web Design</li>
+      <li>eCommerce Web Design</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Marketing</h4>
+    <ul>
+      <li>Marketing</li>
+      <li>Integrated Marketing Services</li>
+      <li>SEO</li>
+      <li>Social Media Marketing</li>
+      <li>Consulting Services</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="index.html" style="text-decoration: none;color: white;"> Home</a></li>
+      <li><a href="about-us.html" style="text-decoration: none;color: white;"> About Us</a></li>
+      <li><a href="case-studies.html" style="text-decoration: none;color: white;"> Case Studies</a></li>
+      <li><a href="digital-trend.html" style="text-decoration: none;color: white;"> Digital Trends</a></li>
+      <li><a href="top-companies.html" style="text-decoration: none;color: white;"> Top Companies</a></li>
+      <li><a href="reviews.html" style="text-decoration: none;color: white;"> Reviews</a></li>
+      <li><a href="sitemap.html" style="text-decoration: none;color: white;"> Sitemap</a></li>
+      <li><a href="location.html" style="text-decoration: none;color: white;"> Locations</a></li>
+      <li><a href="contact-us.html" style="text-decoration: none;color: white;"> Contact Us</a></li>
+      <li><a href="get-started.html" style="text-decoration: none;color: white;"> Get Started</a></li>
+    </ul>
+  </div>
+
+</div>
+
+
+    <!-- Locations -->
+    <div class="locations">
+      <img src="images/logo.svg" class="footer-logo" alt="">
+
+      <div class="location-divider">
+      <div class="location">
+        <span class="abbr">MI</span>
+        <p><strong>Miami</strong><br>17575 Collins Avenue<br>Sunny Isles Beach, FL 33160</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">NY</span>
+        <p><strong>New York</strong><br>18 West 18th Street<br>New York, NY 10011</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CHI</span>
+        <p><strong>Chicago</strong><br>625 W Adams St<br>Chicago, IL 60661</p>
+      </div>
+
+      <div class="location">
+        <span class="abbr">CA</span>
+        <p><strong>California</strong><br>600 B St<br>San Diego, CA 92101</p>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>©2026 Digital Silk. All rights reserved</p>
+    <!-- <div class="bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Accessibility</a>
+      <a href="#">Call us at (800) 206-9413</a>
+    </div> -->
+  </div>
+</footer>
+
+
+</body>
+</html>
+s

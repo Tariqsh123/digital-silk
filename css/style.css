@@ -309,6 +309,29 @@ header {
     padding: 50px;
     box-sizing: border-box;
 }
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* behind text */
+    overflow: hidden;
+}
+.header-bg::after{
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(0, 0, 0,0.8);
+}
+.header-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* makes the image cover the header area */
+}
 
 .header-video {
     position: absolute;
@@ -401,23 +424,25 @@ header {
 
 @media (max-width: 600px) {
     header {
-        height: 400px;
+        height: fit-content;
+        padding: 60px 10px;
+        padding-top: 120px;
     }
 
     .header-text-container {
-        gap: 10px;
+        gap: 20px;
     }
 
     .header-text-container h1 {
-        font-size: 38px;
+        font-size: 35px;
     }
 
     .header-text-container h2 {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .header-text-container h3 {
-        font-size: 14px;
+        font-size: small;
     }
 
     .header-btn {
@@ -670,8 +695,9 @@ header {
 
 .our-work-inner-container h2 {
     text-align: center;
+    font-weight: 900;
     color: #fff;
-    font-size: 35px;
+    font-size: 50px;
 }
 
 .our-work-inner-container p {
@@ -781,9 +807,11 @@ header {
 
 @media(max-width:600px) {
     .our-work-inner-container h3 {
-        font-size: 18px;
+        font-size: 16px;
     }
-
+    .our-work-inner-container{
+      gap: 20px;
+    }
     .our-work-inner-container h2 {
         font-size: 35px;
     }
@@ -3494,6 +3522,9 @@ header {
   font-size: 13px;
   line-height: 1.9;
   opacity: 0.95;
+}
+.col li a{
+  color: white;
 }
 
 /* LOCATIONS */
