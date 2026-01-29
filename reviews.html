@@ -11,6 +11,17 @@
 </head>
 <body>
 
+     <style>
+    nav{
+      background-color: #5cc8f3;
+    }
+    .reviews-page-review-card{
+      background: linear-gradient(to right,#4972b8,#5cc8f3);
+    }
+    .reviewer-name{
+      color: white;
+    }
+  </style>
 <nav id="mainNav">
   <a href="index.html">
     <img src="images/logo.svg" class="logo" alt="Logo" title="Logo">
@@ -229,93 +240,6 @@ window.addEventListener("scroll", () => {
  </section>
 
 
- <!-- Tabs Section -->
- <section class="awards-section">
-  <div class="awards-container">
-
-    <h3 class="awards-subtitle">Our Experts Have Won Industry Awards</h3>
-    <h2 class="awards-title">Recognized Web Design Experts</h2>
-
-    <!-- Tabs -->
-    <div class="awards-tabs">
-      <button class="awards-tab awards-active" data-awards-tab="awards-awards">Awards</button>
-      <button class="awards-tab" data-awards-tab="awards-recognition">Recognition</button>
-      <button class="awards-tab" data-awards-tab="awards-expertise">Expertise</button>
-    </div>
-
-    <!-- Awards -->
-    <div class="awards-tab-content awards-active" id="awards-awards">
-      <div class="awards-image-grid">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/award-IMA-WHITE-1.svg" alt="">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/12/Marcom_logo-1.png.webp" alt="">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/pngwing-1.svg" alt="">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/horizon-interactive-awards-logo-vector-1.svg" alt="">
-      </div>
-    </div>
-
-    <!-- Recognition -->
-    <div class="awards-tab-content" id="awards-recognition">
-      <div class="awards-image-grid">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/12/FoxNews_logo-1-120x112.png.webp" alt="">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/Vector-5.svg" alt="">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2024/11/design-rush.svg" alt="">
-        <img src="https://www.digitalsilk.com/wp-content/uploads/2022/07/New_Bloomberg_Logo-1.svg" alt="">
-      </div>
-    </div>
-
-    <!-- Expertise -->
-    <div class="awards-tab-content" id="awards-expertise">
-      <div class="awards-expertise-grid">
-        <ul>
-          <li>Brand Strategy</li>
-          <li>Communication Strategy</li>
-          <li>Logo & Graphic Design</li>
-          <li>UI & UX Design</li>
-          <li>Package Design</li>
-        </ul>
-        <ul>
-          <li>Custom Web Design</li>
-          <li>eCommerce Development</li>
-          <li>Mobile App Development</li>
-          <li>Software & AI Development</li>
-          <li>ERP Portal Integration</li>
-        </ul>
-        <ul>
-          <li>Marketing Strategy</li>
-          <li>Social Media Marketing</li>
-          <li>Search Engine Optimization</li>
-          <li>Paid Media Marketing</li>
-          <li>Email Marketing</li>
-        </ul>
-        <ul>
-          <li>Creative Copywriting</li>
-          <li>Content Marketing</li>
-          <li>Influencer Marketing</li>
-          <li>Affiliate Marketing</li>
-          <li>B2B Direct Marketing</li>
-        </ul>
-      </div>
-    </div>
-
-    <a href="#" class="awards-btn">View All Capabilities</a>
-
-  </div>
-</section>
-<script>
-  const awardsTabs = document.querySelectorAll('.awards-tab');
-  const awardsContents = document.querySelectorAll('.awards-tab-content');
-
-  awardsTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      awardsTabs.forEach(t => t.classList.remove('awards-active'));
-      awardsContents.forEach(c => c.classList.remove('awards-active'));
-
-      tab.classList.add('awards-active');
-      document.getElementById(tab.dataset.awardsTab)
-        .classList.add('awards-active');
-    });
-  });
-</script>
 
 
 <!-- Footer -->
@@ -358,11 +282,11 @@ window.addEventListener("scroll", () => {
   <div class="col">
     <h4>Marketing</h4>
     <ul>
-      <li><a href="">Marketing</a></li>
-      <li><a href="">Integrated Marketing Services</a></li>
-      <li><a href="">SEO</a></li>
-      <li><a href="">Social Media Marketing</a></li>
-      <li><a href="">Consulting Services</a></li>
+      <li><a href="marketing.html">Marketing</a></li>
+      <li><a href="integerated-marketing.html">Integrated Marketing Services</a></li>
+      <li><a href="seo.html">SEO</a></li>
+      <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
+      <li><a href="consulting-services.html">Consulting Services</a></li>
     </ul>
   </div>
 
