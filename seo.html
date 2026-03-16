@@ -1567,5 +1567,40 @@ faqs.forEach(faq => {
 </footer>
 
 
+
+<div id="imageOverlay" class="image-overlay">
+    <span class="close-btn">&times;</span>
+    <img class="overlay-image" id="overlayImg">
+</div>
+<script>
+
+const ocards = document.querySelectorAll(".our-work-card, .featured-slide");
+const overlay = document.getElementById("imageOverlay");
+const overlayImg = document.getElementById("overlayImg");
+const closeBtn = document.querySelector(".close-btn");
+
+ocards.forEach(card => {
+    card.addEventListener("click", function () {
+        const img = this.querySelector("img");
+        if(img){
+            overlay.style.display = "flex";
+            overlayImg.src = img.src;
+        }
+    });
+});
+
+closeBtn.addEventListener("click", function(){
+    overlay.style.display = "none";
+});
+
+overlay.addEventListener("click", function(e){
+    if(e.target !== overlayImg){
+        overlay.style.display = "none";
+    }
+});
+
+</script>
+
+
 </body>
 </html>
