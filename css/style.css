@@ -804,6 +804,10 @@ header {
     .our-work-inner-container p {
         width: 100%;
     }
+    .our-work-card {
+      width: 340px;
+      height: 350px;
+}
 }
 
 @media(max-width:600px) {
@@ -828,10 +832,29 @@ header {
     }
 
     .our-work-card {
-        height: auto;
+        height: 400px;
         width: 100%;
     }
 
+}
+.our-work-dropdown {
+    display: none;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    width: 250px;
+}
+
+/* BELOW 991px */
+@media(max-width:991px){
+    .our-work-button-section {
+        display: none;
+    }
+
+    .our-work-dropdown {
+        display: block;
+    }
 }
 
 /* industries-main-section */
@@ -4688,3 +4711,4 @@ header {
     color:#fff;
     cursor:pointer;
 }
+

@@ -236,6 +236,12 @@ window.addEventListener('resize', duplicateImages);
             <button data-category="b2c"><i class="fas fa-users"></i>B2C</button>
             <button data-category="ecommerce"><i class="fas fa-shopping-cart"></i>Ecommerce</button>
         </div>
+        <select class="our-work-dropdown">
+    <option value="feature">Feature</option>
+    <option value="b2b">B2B</option>
+    <option value="b2c">B2C</option>
+    <option value="ecommerce">Ecommerce</option>
+</select>
 
         <div class="our-work-card-container">
             <!-- Feature Cards -->
@@ -295,21 +301,56 @@ window.addEventListener('resize', duplicateImages);
 <script>
 const workButtons = document.querySelectorAll('.our-work-button-section button');
 const workCards = document.querySelectorAll('.our-work-card');
+const workDropdown = document.querySelector('.our-work-dropdown');
+
+// reusable function
+function filterCards(category){
+    workCards.forEach(card => {
+        if(card.classList.contains(category)){
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// BUTTON CLICK
 workButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         workButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
         const category = btn.getAttribute('data-category');
-        workCards.forEach(card => {
-            if(card.classList.contains(category)){
-                card.style.display = 'flex'; 
-            } else {
-                card.style.display = 'none';
-            }
-        });
+        filterCards(category);
+
+        // sync dropdown
+        if(workDropdown){
+            workDropdown.value = category;
+        }
     });
 });
-workButtons[0].click();
+
+// DROPDOWN CHANGE
+if(workDropdown){
+    workDropdown.addEventListener('change', () => {
+        const category = workDropdown.value;
+
+        filterCards(category);
+
+        // sync buttons
+        workButtons.forEach(b => b.classList.remove('active'));
+        const activeBtn = document.querySelector(`.our-work-button-section button[data-category="${category}"]`);
+        if(activeBtn){
+            activeBtn.classList.add('active');
+        }
+    });
+}
+
+// DEFAULT LOAD
+filterCards('feature');
+if(workDropdown){
+    workDropdown.value = 'feature';
+}
 </script>
  <!-- Our Work Section End -->
 
